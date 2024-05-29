@@ -9,7 +9,7 @@ tags:
 課程進度會用到之前的內容
 有空再補上
 
-只是個人上課筆記，排版有跑掉有空再整理
+> 代表個人筆記
 
 <!-- more -->
 
@@ -243,9 +243,11 @@ tags:
 <br>
 
 10. 新增 /admin/notice/add.blade.php 頁面
-<br>
     > 新增內容總要有輸入和送出的地方
-    就是這個表單
+    就是這個頁面
+    !!! 這個版本沒有把 `bootstrap` 改成舊的 !!!
+    !!! 版型可能會不一樣 !!!
+
     ```php
 
     // 排版可以自行調整，這版有點醜
@@ -276,4 +278,86 @@ tags:
     </div>
     @endsection
 
+    ```
+<br>
+
+11. 已新增時跳出通知視窗
+    > 使用sweetalret2
+
+    ```php
+    // 於/admin/app.blade 內修改
+
+    <head>
+
+        // 引入sweetalert2
+        <link rel="stylesheet" href="/css/admin/sweetalert2.min.css">
+        <script rel="stylesheet" src="/js/admin/sweetalert2.all.min.js"></script>
+
+    </head>
+    <body>
+
+        // 新增迴圈, 使用sweetalert2
+
+        @if(Session::has("message"))
+            <script>
+                swal.fire("{{ Session::get('message') }}");
+            </script>
+        @endif
+    </body>
+    ```
+
+<br>
+
+12. 於adminNoticeController 增加edit的方法
+
+    ```php
+    public function edit(Request $req){
+
+        $notice = Notice::find($req->id);
+
+        return view("admin.notice.edit", compact("notice"));
+
+    }
+
+    public function update(Request $req){
+
+        $notice = Notice::find($req->id);
+        $notice->title = $req->title;
+        $notice->save();    // 也可用 $notice->update();
+
+        Session::flash("message", "已修改");
+        return redirect("/admin/notice/list");
+
+    }
+    ```
+<br>
+
+13. 新增 /admin/notice/edit.blade 頁面
+    ```php
+    @extends("admin.app")
+    @section("title","修改內容")
+    @section("content")
+    <div class="container">
+        <div class="row">
+            <div class="card col-12">
+                <div class="card-header">
+                    <a href="../list" class="btn btn-secondary">回上頁</a>
+                </div>
+            </div>
+            <form method="post" action="../update">
+                <input type="hidden" name="id" value="{{ $notice->id }}">
+                {{ csrf_field() }}
+                <div class="row">
+                    <label class="col-form-lable col-3 text-right">標題</label>
+                    <div class="col-9">
+                        <input type="text" class="form-control" name="title" value="{{ $notice->title }}" require autofocus>
+                    </div>
+                </div>
+                <div class="card-body text-center mt-3">
+                    <button class="btn btn-primary" type="submit">確定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    @endsection
     ```

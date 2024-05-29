@@ -1,11 +1,15 @@
 ---
-title: lavarel
+title: Lavarel - 後台管理系統
 date: 2024-05-29 08:39:11
 tags:
 ---
 
-### Lavarel - 後台管理系統
+### 前言
 
+課程進度會用到之前的內容
+有空再補上
+
+只是個人上課筆記，排版有跑掉有空再整理
 
 <!-- more -->
 
@@ -28,7 +32,7 @@ tags:
    + menu   -> 選單
    + home   -> 首頁
   <br>
-5. 將`Main content`剪下貼到`home.blade`裡
+5. 將 `Main content` 剪下貼到 `home.blade` 裡
 6. 在原本sidebar的位置引入menu（需要路徑引入特定檔案內容）
    ```php
     <!-- Sidebar Menu -->

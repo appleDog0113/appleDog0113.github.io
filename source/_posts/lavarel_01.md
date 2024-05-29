@@ -149,8 +149,6 @@ tags:
 
 5. 新增/notice/list.blade.php
 
-   <br>
-
     ```php
 
     //頁面新增以下內容
@@ -244,4 +242,38 @@ tags:
 
 <br>
 
-10. 
+10. 新增 /admin/notice/add.blade.php 頁面
+<br>
+    > 新增內容總要有輸入和送出的地方
+    就是這個表單
+    ```php
+
+    // 排版可以自行調整，這版有點醜
+
+    @extends("admin.app")
+    @section("title","新增注意事項")
+    @section("content")
+    <div class="container">
+        <div class="row">
+            <div class="card col-12">
+                <div class="card-header">
+                    <a href="list" class="btn btn-secondary">回上頁</a>
+                </div>
+            </div>
+            <form method="post" action="insert">
+                {{ csrf_field() }}
+                <div class="row">
+                    <label class="col-form-lable col-3 text-right">標題</label>
+                    <div class="col-9">
+                        <input type="text" class="form-control" name="title" require autofocus>
+                    </div>
+                </div>
+                <div class="card-body text-center mt-3">
+                    <button class="btn btn-primary" type="submit">確定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    @endsection
+
+    ```

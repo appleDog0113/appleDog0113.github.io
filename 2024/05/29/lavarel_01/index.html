@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appledog0113.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Lavarel - 後台管理系統">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lavarel">
+<meta property="og:url" content="http://appledog0113.github.io/2024/05/29/lavarel_01/index.html">
+<meta property="og:site_name" content="AppleDog&#39;s Note">
+<meta property="og:description" content="Lavarel - 後台管理系統">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-05-29T00:39:11.000Z">
+<meta property="article:modified_time" content="2024-05-29T04:57:17.105Z">
+<meta property="article:author" content="appleDog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://appledog0113.github.io/2024/05/29/lavarel_01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>lavarel | AppleDog's Note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AppleDog's Note</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜蟲從零開始的學習筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/05/29/lavarel_01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="appleDog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppleDog's Note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          lavarel
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2024-05-29 08:39:11 / 修改時間：12:57:17" itemprop="dateCreated datePublished" datetime="2024-05-29T08:39:11+08:00">2024-05-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="Lavarel-後台管理系統"><a href="#Lavarel-後台管理系統" class="headerlink" title="Lavarel - 後台管理系統"></a>Lavarel - 後台管理系統</h3><span id="more"></span>
+
+<h4 id="上半場：後台分離"><a href="#上半場：後台分離" class="headerlink" title="上半場：後台分離"></a>上半場：後台分離</h4><p><code>使用AdminLTE-3.2.0</code></p>
+<ol>
+<li><p>從老師那邊下載zip檔</p>
+<blockquote>
+<p>網頁工程通常先開發後台管理再開發前台</p>
+</blockquote>
+</li>
+<li><p>&#x2F;resources&#x2F;views-&gt;新增”&#x2F;admin”-&gt;新增app、home、menu.blade.php檔</p>
+<blockquote>
+<p>每個後台的網址都要做檢查，使用middleware，後面會提這是什麼</p>
+</blockquote>
+</li>
+<li><p>打開zip檔，複製index.html內容貼上app.blade</p>
+</li>
+<li><p>剪下<code>sidebar_Menu</code>貼到menu.blade檔案裡</p>
+<blockquote>
+<p>將選單版面分離，也分離權限<br>不同權限登入會看見不同選單功能</p>
+</blockquote>
+<ul>
+<li>app    -&gt; 後台layout</li>
+<li>menu   -&gt; 選單</li>
+<li>home   -&gt; 首頁</li>
+</ul>
+</li>
+</ol>
+  <br>
+5. 將`Main content`剪下貼到`home.blade`裡
+6. 在原本sidebar的位置引入menu（需要路徑引入特定檔案內容）
+   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Sidebar Menu --&gt;</span><br><span class="line">@<span class="keyword">include</span>(<span class="string">&quot;admin.menu&quot;</span>)      <span class="comment">// 引入檔案</span></span><br><span class="line">&lt;!-- /.sidebar-menu --&gt;</span><br></pre></td></tr></table></figure>
+7. 在原本Main content的位置抓content內容（只要名稱能夠抓到就會引入，不用給路徑）
+   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- Main content --&gt;</span><br><span class="line">@<span class="keyword">yield</span>(<span class="string">&quot;content&quot;</span>)</span><br><span class="line">&lt;!-- /.content --&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>目前這三個都是<code>網頁架構</code>，固定要顯示的網頁內容<br>   如果頁面要抽換 <code>直接改home裡面的頁面顯示</code> 即可<br>   所以<code>content</code>只會有一個在<code>home</code>裡（就是home的主架構），其他都是 <code>抽換其中內容</code> 而已</p>
+<ul>
+<li>yield：動態內容</li>
+<li>include：靜態內容</li>
+<li>參考資料 <a target="_blank" rel="noopener" href="https://medium.com/%E5%BF%AB%E6%A8%82%E5%AD%B8%E7%A8%8B%E5%BC%8F/laravel-yield%E7%9A%84%E4%BD%BF%E7%94%A8-5b9f85c01809">Laravel-yield的使用</a></li>
+</ul>
+</blockquote>
+   <br>
+
+
+<ol start="8">
+<li><p>前面有放css和js檔案的話要記得改<code>app.blade</code>的引入路徑</p>
+</li>
+<li><p><code>home.blade</code>裡要繼承頁面<br> 在最前方加入</p>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">extends</span>(<span class="string">&quot;admin.app&quot;</span>)   <span class="comment">//繼承</span></span><br><span class="line">@<span class="title function_ invoke__">section</span>(<span class="string">&quot;content&quot;</span>)</span><br><span class="line">&lt;section&gt;</span><br><span class="line">    Main content貼上的內容</span><br><span class="line">&lt;/section&gt;</span><br><span class="line">@endsection</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指令處輸入：php artisan make:controller Admin&#x2F;AdminController</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增以下方法</span></span><br><span class="line"><span class="comment">// 將home.blade的內容讓view顯示</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AdminController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">home</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&quot;admin.home&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加入路由<br><code>/route/web</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">group</span>([<span class="string">&quot;prefix&quot;</span> =&gt; <span class="string">&quot;admin&quot;</span>], function()&#123;</span><br><span class="line">    route::<span class="title function_ invoke__">get</span>(<span class="string">&quot;home&quot;</span>,[<span class="title class_">AdminController</span>::<span class="variable language_">class</span>, <span class="string">&quot;home&quot;</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li><p>打開server到 <code>/admin/home</code> 確認網頁內容</p>
+</li>
+</ol>
+<hr>
+<h4 id="下半場：後台管理"><a href="#下半場：後台管理" class="headerlink" title="下半場：後台管理"></a>下半場：後台管理</h4><ol>
+<li><p>到menu.blade把不會用到的東西刪掉<br> ex. <code> &lt;li class=&quot;nav-item menu-open&quot;&gt;</code></p>
+</li>
+<li><p>widget改成 <code>注意事項</code>（要連結的網頁名稱，之前做的那個）</p>
+</li>
+<li><p>指令處輸入：php artisan make:controller Admin&#x2F;AdminNoticeController</p>
+<blockquote>
+<p>新增 AdminNoticeController</p>
+</blockquote>
+</li>
+</ol>
+<br>
+
+<ol start="4">
+<li><p>新增方法</p>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AdminNoticeController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取得 &quot;Notice&quot; 資料表內容</span></span><br><span class="line">    <span class="comment">// 就是之前建的注意事項網頁</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// get()與all() 取全部資料</span></span><br><span class="line">        <span class="comment">// 此處取 Notice 資料表</span></span><br><span class="line">        <span class="variable">$list</span> = <span class="title class_">Notice</span>::<span class="title function_ invoke__">get</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&quot;admin.notice,list&quot;</span>, <span class="title function_ invoke__">compact</span>(<span class="string">&quot;list&quot;</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 資料表輸入新增資料的內容</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&quot;admin.notice,add&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 資料表新增資料</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">Request <span class="variable">$req</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$notice</span> = <span class="keyword">new</span> <span class="title class_">Notice</span>();</span><br><span class="line">        <span class="variable">$notice</span>-&gt;title = <span class="variable">$req</span>-&gt;title;</span><br><span class="line">        <span class="variable">$notice</span>-&gt;<span class="title function_ invoke__">save</span>();</span><br><span class="line"></span><br><span class="line">        <span class="title class_">Session</span>::<span class="title function_ invoke__">flash</span>(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;已新增&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">redirect</span>(<span class="string">&quot;/admin/notice/list&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><br><br></p>
+<ol start="5">
+<li>新增&#x2F;notice&#x2F;list.blade.php<br>
+
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//頁面新增以下內容</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">extends</span>(<span class="string">&quot;admin.app&quot;</span>)</span><br><span class="line">@<span class="title function_ invoke__">section</span>(<span class="string">&quot;content&quot;</span>)</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">row</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">cole</span>-12&quot;&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">table</span> <span class="title">class</span>=&quot;<span class="title">table</span> <span class="title">table</span>-<span class="title">border</span> <span class="title">border</span> <span class="title">border</span>-<span class="title">dark</span>&quot;&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">thead</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">th</span>&gt;</span></span><br><span class="line"><span class="class">                &lt;<span class="title">td</span> <span class="title">class</span>=&quot;<span class="title">text</span>-<span class="title">center</span>&quot;&gt;</span></span><br><span class="line"><span class="class">                    &lt;<span class="title">input</span> <span class="title">type</span>=&quot;<span class="title">checkbox</span>&quot; <span class="title">class</span>=&quot;<span class="title">form</span>-<span class="title">check</span>-<span class="title">input</span>&quot; <span class="title">id</span>=&quot;<span class="title">all</span>&quot;&gt;</span></span><br><span class="line"><span class="class">                &lt;/<span class="title">td</span>&gt;</span></span><br><span class="line"><span class="class">                &lt;<span class="title">td</span> <span class="title">class</span>=&quot;<span class="title">text</span>-<span class="title">left</span>&quot;&gt;注意事項&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;/<span class="title">th</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;/<span class="title">thead</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">tbody</span>&gt;</span></span><br><span class="line"><span class="class">                @<span class="title">foreach</span>($<span class="title">list</span> <span class="title">as</span> $<span class="title">data</span>)</span></span><br><span class="line"><span class="class">                &lt;<span class="title">tr</span>&gt;</span></span><br><span class="line"><span class="class">                    &lt;<span class="title">td</span>&gt;</span></span><br><span class="line"><span class="class">                        &lt;<span class="title">input</span> <span class="title">type</span>=&quot;<span class="title">checkbox</span>&quot; <span class="title">name</span>=&quot;<span class="title">id</span>[]&quot; <span class="title">class</span>=&quot;<span class="title">form</span>-<span class="title">check</span>-<span class="title">input</span>&quot; <span class="title">value</span>=&quot;</span>&#123;&#123; <span class="variable">$data</span>-&gt;id &#125;&#125;<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">                    &lt;/td&gt;</span></span><br><span class="line"><span class="string">                    &lt;td&gt;&#123;&#123; <span class="subst">$data</span>-&gt;title &#125;&#125;&lt;/td&gt;</span></span><br><span class="line"><span class="string">                &lt;/tr&gt;</span></span><br><span class="line"><span class="string">                @endforeach</span></span><br><span class="line"><span class="string">            &lt;/tbody&gt;</span></span><br><span class="line"><span class="string">        &lt;/table&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">@endsection</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><br><br></p>
+<ol start="6">
+<li>新增路由（&#x2F;route&#x2F;web）</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/27/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lavarel-%E5%BE%8C%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1"><span class="nav-number">1.</span> <span class="nav-text">Lavarel - 後台管理系統</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E5%8D%8A%E5%A0%B4%EF%BC%9A%E5%BE%8C%E5%8F%B0%E5%88%86%E9%9B%A2"><span class="nav-number">1.1.</span> <span class="nav-text">上半場：後台分離</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%8D%8A%E5%A0%B4%EF%BC%9A%E5%BE%8C%E5%8F%B0%E7%AE%A1%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">下半場：後台管理</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">appleDog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">appleDog</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

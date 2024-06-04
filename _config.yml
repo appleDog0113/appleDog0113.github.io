@@ -5,11 +5,11 @@
 # Site
 title: AppleDog's Note
 subtitle: 菜蟲從零開始的學習筆記
-description: 
+description:
 keywords:
 author: AppleDog
 language: zh-TW
-timezone: 'Asia/Taipei'
+timezone: "Asia/Taipei"
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -37,30 +37,34 @@ titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
-  exclude: ''
+  exclude: ""
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: ""
   wrap: true
   hljs: false
 prismjs:
   preprocess: true
   line_number: true
-  tab_replace: ''
+  tab_replace: ""
+
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
 
@@ -80,7 +84,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: "mtime"
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -101,7 +105,7 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: 'git'
+  type: "git"
   repo: git@github.com:appleDog0113/appleDog0113.github.io.git
   branch: main
 
@@ -112,6 +116,6 @@ symbols_count_time:
   total_symbols: false # 網頁底部字數統計顯示
   total_time: false # 網頁底部閱讀時間顯示
   exclude_codeblock: true # 字數統計是否排除程式碼
-  awl: 4  # 平均文字長度，中文為 2, 英文為 5, 預設為 4
-  wpm: 275  # 一分鐘閱讀字數
+  awl: 4 # 平均文字長度，中文為 2, 英文為 5, 預設為 4
+  wpm: 275 # 一分鐘閱讀字數
   suffix: "分鐘"

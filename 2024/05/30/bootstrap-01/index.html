@@ -23,16 +23,18 @@
   <meta name="description" content="前言詳見官方說明文件課堂引入要記得用打包下來的檔案避免流量爆炸css用 &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;bootstrap.min.css&quot;&gt;引入js 用  &lt;script src&#x3D;&quot;js&#x2F;bootstrap.bundle.min.js&quot;&gt;&lt;&#x2F;script&gt;引入  ：這">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bootstrap 簡介 01.">
-<meta property="og:url" content="http://appledog0113.github.io/2024/05/31/20240530-bootstrap-01/index.html">
+<meta property="og:url" content="http://appledog0113.github.io/2024/05/30/bootstrap-01/index.html">
 <meta property="og:site_name" content="AppleDog&#39;s Note">
 <meta property="og:description" content="前言詳見官方說明文件課堂引入要記得用打包下來的檔案避免流量爆炸css用 &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;bootstrap.min.css&quot;&gt;引入js 用  &lt;script src&#x3D;&quot;js&#x2F;bootstrap.bundle.min.js&quot;&gt;&lt;&#x2F;script&gt;引入  ：這">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-05-31T01:02:02.709Z">
-<meta property="article:modified_time" content="2024-05-31T01:02:02.709Z">
+<meta property="article:published_time" content="2024-05-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-04T07:12:48.700Z">
 <meta property="article:author" content="AppleDog">
+<meta property="article:tag" content="職訓">
+<meta property="article:tag" content="Bootstrap">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://appledog0113.github.io/2024/05/31/20240530-bootstrap-01/">
+<link rel="canonical" href="http://appledog0113.github.io/2024/05/30/bootstrap-01/">
 
 
 <script id="page-configurations">
@@ -166,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/05/31/20240530-bootstrap-01/">
+    <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/05/30/bootstrap-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +191,31 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2024-05-31 09:02:02" itemprop="dateCreated datePublished" datetime="2024-05-31T09:02:02+08:00">2024-05-31</time>
+              <time title="創建時間：2024-05-30 00:00:00" itemprop="dateCreated datePublished" datetime="2024-05-30T00:00:00+08:00">2024-05-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2024-06-04 15:12:48" itemprop="dateModified" datetime="2024-06-04T15:12:48+08:00">2024-06-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%81%B7%E8%A8%93/" itemprop="url" rel="index"><span itemprop="name">職訓</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%81%B7%E8%A8%93/Bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a>
+                </span>
             </span>
 
           <br>
@@ -221,7 +247,6 @@
 </blockquote>
 <span id="more"></span>
 
-
 <h4 id="css自訂"><a href="#css自訂" class="headerlink" title="css自訂"></a>css自訂</h4><p>除了bootstrap外可以額外自訂內容<br>比如說很醜的顏色系列（primary、danger…等）可以自己換掉<br>或<code>新增自定義</code></p>
 <h5 id="自定義顏色樣式"><a href="#自定義顏色樣式" class="headerlink" title="自定義顏色樣式"></a>自定義顏色樣式</h5><blockquote>
 <p>要避開<code>保留關鍵字</code>！！！<br>很醜顏色系列的名字不能用，優先度不同 </p>
@@ -235,6 +260,7 @@
 <p>marge: 外距<br>padding: 內距</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .box &#123;</span><br><span class="line">        height: <span class="number">200</span>px;</span><br><span class="line">        width: <span class="number">300</span>px;</span><br><span class="line">        border: <span class="number">2</span>px solid dimgray;</span><br><span class="line">        padding: <span class="number">20</span>px;</span><br><span class="line">        box-sizing: border-box;   </span><br><span class="line">        <span class="comment">/*box-sizing:</span></span><br><span class="line"><span class="comment">        content-box; 指定容器長寬從內容起算</span></span><br><span class="line"><span class="comment">        border-box; 指定容器長寬從邊緣起算</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">box</span> <span class="title">bg</span>-04&quot;&gt;&lt;/<span class="title">div</span>&gt;       // 上面設定好的內容可以直接使用囉！</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>參考資料 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10252827">Box-sizing - 金魚都能懂的CSS必學屬性</a></p>
 </blockquote>
@@ -247,18 +273,21 @@
 <p>引用方式<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/[檔名].css&quot;&gt;</code><br><br></p>
 <hr>
 <h4 id="常用文字樣式設定"><a href="#常用文字樣式設定" class="headerlink" title="常用文字樣式設定"></a>常用文字樣式設定</h4><h5 id="階層"><a href="#階層" class="headerlink" title="階層"></a>階層</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">container</span>&quot;&gt;</span></span><br><span class="line"><span class="class">  &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">row</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">col</span> <span class="title">demo01</span> <span class="title">text</span>-<span class="title">light</span>&quot;&gt;</span></span><br><span class="line"><span class="class">      &lt;<span class="title">h1</span>&gt;壓力古代現有著名應當法規台北展示&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="class">      &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h2</span>&quot;&gt;壓力古代現有著名應當法規台北展示&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">      &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h3</span>&quot;&gt;壓力古代現有著名應當法規台北展示&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">      &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h4</span>&quot;&gt;壓力古代現有著名應當法規台北展示&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">      &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h5</span>&quot;&gt;壓力古代現有著名應當法規台北展示&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">      &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h6</span>&quot;&gt;壓力古代現有著名應當法規台北展示&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">  &lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <ul>
 <li>bootstrap 建議階層使用<code>&lt;div class=&quot;h1&quot;&gt;</code>的方式做設定</li>
 </ul>
 </blockquote>
 <h5 id="大標題"><a href="#大標題" class="headerlink" title="大標題"></a>大標題</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">col</span> <span class="title">demo01</span> <span class="title">text</span>-<span class="title">light</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">display</span>-1&quot;&gt;大標題&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">display</span>-2&quot;&gt;大標題&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">display</span>-3&quot;&gt;大標題&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">display</span>-4&quot;&gt;大標題&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">display</span>-5&quot;&gt;大標題&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">display</span>-6&quot;&gt;大標題&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <ul>
 <li>看起來比階層更大！</li>
 </ul>
 </blockquote>
 <h5 id="字形效果"><a href="#字形效果" class="headerlink" title="字形效果"></a>字形效果</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">col</span> <span class="title">demo01</span> <span class="title">text</span>-<span class="title">light</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;這是<span class="title">css</span>的&lt;<span class="title">mark</span>&gt;字形效果&lt;/<span class="title">mark</span>&gt;&lt;/<span class="title">p</span>&gt;           // 螢光筆</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;這是<span class="title">css</span>的&lt;<span class="title">del</span>&gt;字形效果&lt;/<span class="title">del</span>&gt;&lt;/<span class="title">p</span>&gt;             // 刪除線</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;這是<span class="title">css</span>的&lt;<span class="title">s</span>&gt;字形效果&lt;/<span class="title">s</span>&gt;&lt;/<span class="title">p</span>&gt;                 // 刪除縣</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;這是<span class="title">css</span>的&lt;<span class="title">u</span>&gt;字形效果&lt;/<span class="title">u</span>&gt;&lt;/<span class="title">p</span>&gt;                 // 底線</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;這是<span class="title">css</span>的&lt;<span class="title">small</span>&gt;字形效果&lt;/<span class="title">small</span>&gt;&lt;/<span class="title">p</span>&gt;         // 字體縮小</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;這是<span class="title">css</span>的&lt;<span class="title">strong</span>&gt;字形效果&lt;/<span class="title">strong</span>&gt;&lt;/<span class="title">p</span>&gt;       // 粗體</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;這是<span class="title">css</span>的&lt;<span class="title">em</span>&gt;字形效果&lt;/<span class="title">em</span>&gt;&lt;/<span class="title">p</span>&gt;               // 斜體</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="無序列表"><a href="#無序列表" class="headerlink" title="無序列表"></a>無序列表</h5><blockquote>
 <ul>
 <li>表現出來就是這個</li>
@@ -268,8 +297,6 @@
 </ul>
 </li>
 </ul>
-</blockquote>
-<blockquote>
 <p>vscode可以直接輸入<code>ul&gt;li*5</code> 一次列出五列！</p>
 </blockquote>
 <h6 id="直列"><a href="#直列" class="headerlink" title="直列"></a>直列</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">col</span> <span class="title">demo01</span> <span class="title">text</span>-<span class="title">danger</span> <span class="title">text</span>-<span class="title">start</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">ul</span> <span class="title">class</span>=&quot;<span class="title">bg</span>-04 <span class="title">opacity</span>-75&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">li</span>&gt;享受密碼股權。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">li</span>&gt;享受密碼股權。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">li</span>&gt;解決方案，股票。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">li</span>&gt;解決方案，股票。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">li</span>&gt;解決方案，股票。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">li</span>&gt;享受密碼股權。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">li</span>&gt;享受密碼股權。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">li</span>&gt;享受密碼股權。&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -285,7 +312,9 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">col</span> <span class="title">demo01</span> <span class="title">text</span>-<span class="title">truncate</span> <span class="title">text</span>-<span class="title">light</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h3</span> <span class="title">text</span>-<span class="title">light</span>-50&quot;&gt;隱藏超過範圍的文字&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    實在調節研究女朋友還在角色前來新竹日誌友情連結表示計算，差不多技巧導航法院突破在於三年進去長沙，精美語文家族能量臺中，看出門口起點高中求助新聞卻是早已，點這裡下載便是機會背景和我同志狀態基層吃螺絲百姓熟悉，屬性奧客時期回去機器那麼多遊客人群，到我還可以論。</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h5 id="文繞圖"><a href="#文繞圖" class="headerlink" title="文繞圖"></a>文繞圖</h5><h6 id="圖片在左"><a href="#圖片在左" class="headerlink" title="圖片在左"></a>圖片在左</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">col</span> <span class="title">demo01</span> <span class="title">myborder01</span> <span class="title">text</span>-<span class="title">light</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h3</span> <span class="title">text</span>-<span class="title">light</span>-50&quot;&gt;文繞圖-左&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">img</span> <span class="title">src</span>=&quot;<span class="title">imges</span>/<span class="title">orijit</span>-<span class="title">chatterjee</span>-<span class="title">wEBg_pYtynw</span>-<span class="title">unsplash</span>.<span class="title">jpg</span>&quot; <span class="title">alt</span>=&quot;&quot; <span class="title">width</span>=&quot;150<span class="title">px</span>&quot; <span class="title">class</span>=&quot;<span class="title">float</span>-<span class="title">start</span> <span class="title">me</span>-2&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">strong</span>&gt;</span></span><br><span class="line"><span class="class">        實在調節研究女朋友還在角色前來新竹日誌友情連結表示計算，差不多技巧導航法院突破在於三年進去長沙，精美語文家族能量臺中，看出門口起點高中求助新聞卻是早已，點這裡下載便是機會背景和我同志狀態基層吃螺絲百姓熟悉，屬性奧客時期回去機器那麼多遊客人群，到我還可以論。</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">strong</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h6 id="圖片在右"><a href="#圖片在右" class="headerlink" title="圖片在右"></a>圖片在右</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">col</span> <span class="title">demo01</span> <span class="title">myborder01</span> <span class="title">text</span>-<span class="title">light</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h3</span> <span class="title">text</span>-<span class="title">light</span>-50&quot;&gt;文繞圖-右&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">img</span> <span class="title">src</span>=&quot;<span class="title">imges</span>/<span class="title">orijit</span>-<span class="title">chatterjee</span>-<span class="title">wEBg_pYtynw</span>-<span class="title">unsplash</span>.<span class="title">jpg</span>&quot; <span class="title">alt</span>=&quot;&quot; <span class="title">width</span>=&quot;150<span class="title">px</span>&quot; <span class="title">class</span>=&quot;<span class="title">float</span>-<span class="title">end</span> <span class="title">ms</span>-2&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">strong</span>&gt;</span></span><br><span class="line"><span class="class">        實在調節研究女朋友還在角色前來新竹日誌友情連結表示計算，差不多技巧導航法院突破在於三年進去長沙，精美語文家族能量臺中，看出門口起點高中求助新聞卻是早已，點這裡下載便是機會背景和我同志狀態基層吃螺絲百姓熟悉，屬性奧客時期回去機器那麼多遊客人群，到我還可以論。</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">strong</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<br>
 
+<hr>
 <h4 id="常用圖片樣式設定"><a href="#常用圖片樣式設定" class="headerlink" title="常用圖片樣式設定"></a>常用圖片樣式設定</h4><h5 id="圖片縮小"><a href="#圖片縮小" class="headerlink" title="圖片縮小"></a>圖片縮小</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">demo02</span> <span class="title">myborder01</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h1</span> <span class="title">text</span>-<span class="title">center</span> <span class="title">bg</span>-01&quot;&gt;圖片縮小&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">img</span> <span class="title">src</span>=&quot;/<span class="title">imges</span>/<span class="title">nature_02</span>.<span class="title">jpg</span>&quot; <span class="title">alt</span>=&quot;&quot; <span class="title">width</span>=&quot;80%&quot; /&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h5 id="圖片限制在範圍內"><a href="#圖片限制在範圍內" class="headerlink" title="圖片限制在範圍內"></a>圖片限制在範圍內</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">demo02</span> <span class="title">myborder01</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h1</span> <span class="title">text</span>-<span class="title">center</span> <span class="title">bg</span>-01&quot;&gt;限制在範圍內&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">img</span> <span class="title">src</span>=&quot;/<span class="title">imges</span>/<span class="title">nature_02</span>.<span class="title">jpg</span>&quot; <span class="title">alt</span>=&quot;&quot; <span class="title">class</span>=&quot;<span class="title">img</span>-<span class="title">fluid</span>&quot; /&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h5 id="加上相片外框"><a href="#加上相片外框" class="headerlink" title="加上相片外框"></a>加上相片外框</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">demo02</span> <span class="title">myborder01</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">h1</span> <span class="title">text</span>-<span class="title">center</span> <span class="title">bg</span>-01&quot;&gt;加上相片外框&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">img</span> <span class="title">src</span>=&quot;/<span class="title">imges</span>/<span class="title">nature_02</span>.<span class="title">jpg</span>&quot; <span class="title">alt</span>=&quot;&quot; <span class="title">class</span>=&quot;<span class="title">img</span>-<span class="title">thumbnail</span>&quot; /&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -299,6 +328,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%81%B7%E8%A8%93/" rel="tag"># 職訓</a>
+              <a href="/tags/Bootstrap/" rel="tag"># Bootstrap</a>
+          </div>
 
         
 
@@ -306,10 +339,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/05/29/lavarel_01/" rel="prev" title="Lavarel - 後台管理系統 01.">
+    <a href="/2024/05/29/lavarel-01/" rel="prev" title="Lavarel - 後台管理系統 01.">
       <i class="fa fa-chevron-left"></i> Lavarel - 後台管理系統 01.
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/31/java-method-01/" rel="next" title="Java 函數的認識 01">
+      Java 函數的認識 01 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -382,9 +418,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">文章</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
 </div>

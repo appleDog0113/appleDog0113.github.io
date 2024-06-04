@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"appledog0113.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="其實沒有用到bootstrsp，主要是css練習。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap css練習 02.">
+<meta property="og:url" content="http://appledog0113.github.io/2024/06/04/bootstrap-02/index.html">
+<meta property="og:site_name" content="AppleDog&#39;s Note">
+<meta property="og:description" content="其實沒有用到bootstrsp，主要是css練習。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://appledog0113.github.io/2024/06/04/bootstrap-02/01.jpg">
+<meta property="article:published_time" content="2024-06-04T07:17:58.000Z">
+<meta property="article:modified_time" content="2024-06-04T08:22:51.274Z">
+<meta property="article:author" content="AppleDog">
+<meta property="article:tag" content="職訓">
+<meta property="article:tag" content="Bootstrap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://appledog0113.github.io/2024/06/04/bootstrap-02/01.jpg">
+
+<link rel="canonical" href="http://appledog0113.github.io/2024/06/04/bootstrap-02/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Bootstrap css練習 02. | AppleDog's Note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">AppleDog's Note</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜蟲從零開始的學習筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/06/04/bootstrap-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AppleDog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppleDog's Note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Bootstrap css練習 02.
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2024-06-04 15:17:58 / 修改時間：16:22:51" itemprop="dateCreated datePublished" datetime="2024-06-04T15:17:58+08:00">2024-06-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%81%B7%E8%A8%93/" itemprop="url" rel="index"><span itemprop="name">職訓</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%81%B7%E8%A8%93/Bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>226</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>1 分鐘</span>
+            </span>
+            <div class="post-description">其實沒有用到bootstrsp，主要是css練習。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>有些原本就會的東西就直接跳過<br>主要紀錄概念釐清跟參數和技術的部份  </p>
+<h4 id="網頁建置練習"><a href="#網頁建置練習" class="headerlink" title="網頁建置練習"></a>網頁建置練習</h4><blockquote>
+<p>tips: 不能使用 <code>Bootstrap</code>  </p>
+</blockquote>
+<p>練習題 01.<br><img src="/2024/06/04/bootstrap-02/01.jpg"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-TW&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>練習<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/myall_00.css&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.wrapper</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">1024px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">0</span> auto;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.logo</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">240px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">imges/nature_02.jpg</span>);</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-repeat</span>: no-repeat;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-position</span>: center <span class="number">40%</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-tag">nav</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">5px</span> <span class="number">0px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">ul</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">display</span>: inline-block;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">li</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">list-style-type</span>: none;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.content_in</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">10px</span> <span class="number">20px</span> <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: large;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">color</span>: <span class="number">#fff</span> <span class="meta">!important</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-tag">footer</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">18px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-weight</span>: bolder;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">5px</span> <span class="number">0px</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">&quot;bg-04&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;banner&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;logo&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;bg-02&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;bg-btn01&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>首頁<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;bg-btn01&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>測試項目<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;bg-btn01&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>不告訴你<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;bg-btn01&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>這是什麼<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;bg-btn01&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>友站連結<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content_in bg-03&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">h1</span>&gt;</span>首頁<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            幾個信箱地說命運一步接觸本次想像成績或者奧客恢復江湖固定頻道，也有一致創業，金額流程將來，全身尤其自信都是，地位界面曾經版權所有安裝富岡傢俱日記藥品魅力正式上去怎麼積極，微微西部蔬菜調查，可以用女人買賣原文各地西安仔細，進來證件規格，烏日事實必然歐美自由。</span><br><span class="line">          <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            制定型號秘密對面國內外以為校園說了觀念別的看過步驟網通或是，共享害怕出發首頁鈴聲商城期限，費用怎麼會事故格式圖文防止後來頭銜上門綜合那樣，承諾提示不需要反饋任何留在總是證件所謂指出他在本網，製造消除值得觀念嚴格聯合協調導演，音樂許可還會遇到，一天控制，環。</span><br><span class="line">          <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;bg-btn01&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>按鈕<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">&quot;bg-01&quot;</span>&gt;</span>版權所有，翻印必究<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>padding和marge的設定順序：</p>
+<blockquote>
+<p>ex.  (unit:px,%…)<br>padding: 上 右 下 左;<br>marge: X軸 Y軸;</p>
+</blockquote>
+</blockquote>
+<hr>
+<h4 id="下拉式內容覆蓋效果"><a href="#下拉式內容覆蓋效果" class="headerlink" title="下拉式內容覆蓋效果"></a>下拉式內容覆蓋效果</h4><h5 id="內文設定"><a href="#內文設定" class="headerlink" title="內文設定"></a>內文設定</h5><blockquote>
+<p>重點在<code>.box_in</code>和<code>.roller</code></p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box_in&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;roller&quot;</span>&gt;</span>卷軸文字<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://fakeimg.pl/600x400/200&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>最新消息<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        以前便是肯定建築緊緊民主辛苦，溫暖對方民主對面，對你規範高考尷尬無法配合以為其他的陷入感受選項有點。</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h5 id="CSS效果設定"><a href="#CSS效果設定" class="headerlink" title="CSS效果設定"></a>CSS效果設定</h5><blockquote>
+<ol>
+<li>在<code>.box_in</code>上面覆蓋一層<code>.roller</code>作為卷軸</li>
+<li><code>.box_in</code>裡設定<code>.roller</code>的css動畫效果</li>
+</ol>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.content</span> <span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">32%</span>;</span><br><span class="line">  <span class="attribute">height</span>: auto;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="selector-class">.box_in</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;   <span class="comment">/* 相對位置 */</span></span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">    <span class="selector-class">.roller</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: flex;</span><br><span class="line">      <span class="attribute">justify-content</span>: center;</span><br><span class="line">      <span class="attribute">align-items</span>: center;</span><br><span class="line">      <span class="comment">/*-- 終究要用flex--*/</span></span><br><span class="line">      <span class="attribute">position</span>: absolute;   <span class="comment">/* 絕對位置 */</span></span><br><span class="line">      <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">      <span class="attribute">background-color</span>: <span class="built_in">var</span>(--mycolor05);</span><br><span class="line">      <span class="attribute">opacity</span>: <span class="number">0%</span>;</span><br><span class="line">      <span class="attribute">top</span>: -<span class="number">30%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.box_in</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.roller</span> &#123;</span><br><span class="line">      <span class="attribute">opacity</span>: <span class="number">100%</span>;</span><br><span class="line">      <span class="attribute">transition</span>: <span class="number">750ms</span>;</span><br><span class="line">      <span class="attribute">top</span>: <span class="number">0%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h4><p>找時間研究一下gif怎麼放吧…</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%81%B7%E8%A8%93/" rel="tag"># 職訓</a>
+              <a href="/tags/Bootstrap/" rel="tag"># Bootstrap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/31/java-method-01/" rel="prev" title="Java 函數的認識 01">
+      <i class="fa fa-chevron-left"></i> Java 函數的認識 01
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B6%B2%E9%A0%81%E5%BB%BA%E7%BD%AE%E7%B7%B4%E7%BF%92"><span class="nav-number">2.</span> <span class="nav-text">網頁建置練習</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E6%8B%89%E5%BC%8F%E5%85%A7%E5%AE%B9%E8%A6%86%E8%93%8B%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">下拉式內容覆蓋效果</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%A7%E6%96%87%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.1.</span> <span class="nav-text">內文設定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CSS%E6%95%88%E6%9E%9C%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.2.</span> <span class="nav-text">CSS效果設定</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%8C%E8%A8%98"><span class="nav-number">4.</span> <span class="nav-text">後記</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">AppleDog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-pen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">如需轉載請註明作者及來源，謝謝。</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

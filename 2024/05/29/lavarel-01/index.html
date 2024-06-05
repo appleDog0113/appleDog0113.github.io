@@ -2,9 +2,10 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +14,13 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"appledog0113.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="前言課程進度會用到之前的內容有空再補上  代表個人筆記">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"appledog0113.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"style":null,"show_result":false},"fold":{"enable":true,"height":500,"threshold":20},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言課程進度會用到之前的內容有空再補上  代表個人筆記">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lavarel - 後台管理系統 01.">
 <meta property="og:url" content="http://appledog0113.github.io/2024/05/29/lavarel-01/index.html">
@@ -34,21 +34,18 @@
 <meta property="article:tag" content="Lavarel">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="http://appledog0113.github.io/2024/05/29/lavarel-01/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>Lavarel - 後台管理系統 01. | AppleDog's Note</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://appledog0113.github.io/2024/05/29/lavarel-01/","path":"2024/05/29/lavarel-01/","title":"Lavarel - 後台管理系統 01."}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lavarel - 後台管理系統 01. | AppleDog's Note</title>
   
+
+
 
 
 
@@ -56,181 +53,192 @@
 
 
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">AppleDog's Note</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">AppleDog's Note</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">菜蟲從零開始的學習筆記</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
     </div>
   </div>
 </div>
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
   </ul>
 </nav>
 
 
 
 
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E5%8D%8A%E5%A0%B4%EF%BC%9A%E5%BE%8C%E5%8F%B0%E5%88%86%E9%9B%A2"><span class="nav-number">1.1.</span> <span class="nav-text">上半場：後台分離</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%BE%9E%E8%80%81%E5%B8%AB%E9%82%A3%E9%82%8A%E4%B8%8B%E8%BC%89zip%E6%AA%94"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 從老師那邊下載zip檔</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-resources-views-%E6%96%B0%E5%A2%9E%E2%80%9D-admin%E2%80%9D-%E6%96%B0%E5%A2%9Eapp%E3%80%81home%E3%80%81menu-blade-php%E6%AA%94"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. &#x2F;resources&#x2F;views-&gt;新增”&#x2F;admin”-&gt;新增app、home、menu.blade.php檔</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%89%93%E9%96%8Bzip%E6%AA%94%EF%BC%8C%E8%A4%87%E8%A3%BDindex-html%E5%85%A7%E5%AE%B9%E8%B2%BC%E4%B8%8Aapp-blade"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 打開zip檔，複製index.html內容貼上app.blade</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%89%AA%E4%B8%8Bsidebar-Menu%E8%B2%BC%E5%88%B0menu-blade%E6%AA%94%E6%A1%88%E8%A3%A1"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 剪下sidebar_Menu貼到menu.blade檔案裡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E5%B0%87-Main-content-%E5%89%AA%E4%B8%8B%E8%B2%BC%E5%88%B0-home-blade-%E8%A3%A1"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 將 Main content 剪下貼到 home.blade 裡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E5%9C%A8%E5%8E%9F%E6%9C%ACsidebar%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%BC%95%E5%85%A5menu%EF%BC%88%E9%9C%80%E8%A6%81%E8%B7%AF%E5%BE%91%E5%BC%95%E5%85%A5%E7%89%B9%E5%AE%9A%E6%AA%94%E6%A1%88%E5%85%A7%E5%AE%B9%EF%BC%89"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. 在原本sidebar的位置引入menu（需要路徑引入特定檔案內容）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E5%9C%A8%E5%8E%9F%E6%9C%ACMain-content%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%8A%93content%E5%85%A7%E5%AE%B9%EF%BC%88%E5%8F%AA%E8%A6%81%E5%90%8D%E7%A8%B1%E8%83%BD%E5%A4%A0%E6%8A%93%E5%88%B0%E5%B0%B1%E6%9C%83%E5%BC%95%E5%85%A5%EF%BC%8C%E4%B8%8D%E7%94%A8%E7%B5%A6%E8%B7%AF%E5%BE%91%EF%BC%89"><span class="nav-number">1.1.7.</span> <span class="nav-text">7. 在原本Main content的位置抓content內容（只要名稱能夠抓到就會引入，不用給路徑）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E5%89%8D%E9%9D%A2%E6%9C%89%E6%94%BEcss%E5%92%8Cjs%E6%AA%94%E6%A1%88%E7%9A%84%E8%A9%B1%E8%A6%81%E8%A8%98%E5%BE%97%E6%94%B9app-blade%E7%9A%84%E5%BC%95%E5%85%A5%E8%B7%AF%E5%BE%91"><span class="nav-number">1.1.8.</span> <span class="nav-text">8. 前面有放css和js檔案的話要記得改app.blade的引入路徑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-home-blade%E8%A3%A1%E8%A6%81%E7%B9%BC%E6%89%BF%E9%A0%81%E9%9D%A2"><span class="nav-number">1.1.9.</span> <span class="nav-text">9. home.blade裡要繼承頁面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-%E6%8C%87%E4%BB%A4%E8%99%95%E8%BC%B8%E5%85%A5%EF%BC%9Aphp-artisan-make-controller-Admin-AdminController"><span class="nav-number">1.1.10.</span> <span class="nav-text">10. 指令處輸入：php artisan make:controller Admin&#x2F;AdminController</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E5%8A%A0%E5%85%A5%E8%B7%AF%E7%94%B1"><span class="nav-number">1.1.11.</span> <span class="nav-text">11. 加入路由</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-%E6%89%93%E9%96%8Bserver%E5%88%B0-admin-home-%E7%A2%BA%E8%AA%8D%E7%B6%B2%E9%A0%81%E5%85%A7%E5%AE%B9"><span class="nav-number">1.1.12.</span> <span class="nav-text">12. 打開server到 &#x2F;admin&#x2F;home 確認網頁內容</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%8D%8A%E5%A0%B4%EF%BC%9A%E5%BE%8C%E5%8F%B0%E5%BB%BA%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">下半場：後台建置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%B0menu-blade%E6%8A%8A%E4%B8%8D%E6%9C%83%E7%94%A8%E5%88%B0%E7%9A%84%E6%9D%B1%E8%A5%BF%E5%88%AA%E6%8E%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 到menu.blade把不會用到的東西刪掉</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-widget%E6%94%B9%E6%88%90-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%EF%BC%88%E8%A6%81%E9%80%A3%E7%B5%90%E7%9A%84%E7%B6%B2%E9%A0%81%E5%90%8D%E7%A8%B1%EF%BC%8C%E4%B9%8B%E5%89%8D%E5%81%9A%E7%9A%84%E9%82%A3%E5%80%8B%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. widget改成 注意事項（要連結的網頁名稱，之前做的那個）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%8C%87%E4%BB%A4%E8%99%95%E8%BC%B8%E5%85%A5%EF%BC%9Aphp-artisan-make-controller-Admin-AdminNoticeController"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 指令處輸入：php artisan make:controller Admin&#x2F;AdminNoticeController</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 新增方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E6%96%B0%E5%A2%9E-notice-list-blade-php"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 新增&#x2F;notice&#x2F;list.blade.php</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E6%96%B0%E5%A2%9E%E8%B7%AF%E7%94%B1%EF%BC%88-route-web%EF%BC%89"><span class="nav-number">1.2.6.</span> <span class="nav-text">7. 新增路由（&#x2F;route&#x2F;web）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E5%88%B0app-blade%E4%BF%AE%E6%94%B9-Content-Header-Page-Header"><span class="nav-number">1.2.7.</span> <span class="nav-text">8. 到app.blade修改 Content Header (Page Header)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-list-blade-%E5%A2%9E%E5%8A%A0%E6%96%B0%E5%A2%9E%E5%88%AA%E9%99%A4%E6%8C%89%E9%88%95"><span class="nav-number">1.2.8.</span> <span class="nav-text">9. list.blade 增加新增刪除按鈕</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-%E6%96%B0%E5%A2%9E-admin-notice-add-blade-php-%E9%A0%81%E9%9D%A2"><span class="nav-number">1.2.9.</span> <span class="nav-text">10. 新增 &#x2F;admin&#x2F;notice&#x2F;add.blade.php 頁面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E5%B7%B2%E6%96%B0%E5%A2%9E%E6%99%82%E8%B7%B3%E5%87%BA%E9%80%9A%E7%9F%A5%E8%A6%96%E7%AA%97"><span class="nav-number">1.2.10.</span> <span class="nav-text">11. 已新增時跳出通知視窗</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-%E6%96%BCadminNoticeController-%E5%A2%9E%E5%8A%A0edit%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.11.</span> <span class="nav-text">12. 於adminNoticeController 增加edit的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-%E6%96%B0%E5%A2%9E-admin-notice-edit-blade-%E9%A0%81%E9%9D%A2"><span class="nav-number">1.2.12.</span> <span class="nav-text">13. 新增 &#x2F;admin&#x2F;notice&#x2F;edit.blade 頁面</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">AppleDog</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-    </header>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  </aside>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+    </div>
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/05/29/lavarel-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="AppleDog">
-      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="AppleDog's Note">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Lavarel - 後台管理系統 01. | AppleDog's Note">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           Lavarel - 後台管理系統 01.
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2024-05-29 08:39:11" itemprop="dateCreated datePublished" datetime="2024-05-29T08:39:11+08:00">2024-05-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-06-03 08:54:04" itemprop="dateModified" datetime="2024-06-03T08:54:04+08:00">2024-06-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%81%B7%E8%A8%93/" itemprop="url" rel="index"><span itemprop="name">職訓</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%81%B7%E8%A8%93/Lavarel/" itemprop="url" rel="index"><span itemprop="name">Lavarel</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Lavarel/" itemprop="url" rel="index"><span itemprop="name">Lavarel</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2024-05-29 08:39:11" itemprop="dateCreated datePublished" datetime="2024-05-29T08:39:11+08:00">2024-05-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-06-03 08:54:04" itemprop="dateModified" datetime="2024-06-03T08:54:04+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/" itemprop="url" rel="index"><span itemprop="name">職訓</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/Lavarel/" itemprop="url" rel="index"><span itemprop="name">Lavarel</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Lavarel/" itemprop="url" rel="index"><span itemprop="name">Lavarel</span></a>
+        </span>
+    </span>
 
-          <br>
-            <span class="post-meta-item" title="文章字數">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-              <span>1.4k</span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-              <span>1 分鐘</span>
-            </span>
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>1 分鐘</span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -238,10 +246,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>課程進度會用到之前的內容<br>有空再補上</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>課程進度會用到之前的內容<br>有空再補上</p>
 <blockquote>
 <p>代表個人筆記</p>
 </blockquote>
@@ -337,7 +342,7 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E8%81%B7%E8%A8%93/" rel="tag"># 職訓</a>
               <a href="/tags/Lavarel/" rel="tag"># Lavarel</a>
@@ -345,165 +350,71 @@
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2024/05/27/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/05/30/bootstrap-01/" rel="next" title="Bootstrap 簡介 01.">
-      Bootstrap 簡介 01. <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/27/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/05/30/bootstrap-01/" rel="next" title="Bootstrap 簡介 01.">
+                  Bootstrap 簡介 01. <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
           </div>
-          
+    </footer>
+  </article>
+</div>
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-pen"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">如需轉載請註明作者及來源，謝謝。</span>
   </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E5%8D%8A%E5%A0%B4%EF%BC%9A%E5%BE%8C%E5%8F%B0%E5%88%86%E9%9B%A2"><span class="nav-number">1.1.</span> <span class="nav-text">上半場：後台分離</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%BE%9E%E8%80%81%E5%B8%AB%E9%82%A3%E9%82%8A%E4%B8%8B%E8%BC%89zip%E6%AA%94"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 從老師那邊下載zip檔</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-resources-views-%E6%96%B0%E5%A2%9E%E2%80%9D-admin%E2%80%9D-%E6%96%B0%E5%A2%9Eapp%E3%80%81home%E3%80%81menu-blade-php%E6%AA%94"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. &#x2F;resources&#x2F;views-&gt;新增”&#x2F;admin”-&gt;新增app、home、menu.blade.php檔</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%89%93%E9%96%8Bzip%E6%AA%94%EF%BC%8C%E8%A4%87%E8%A3%BDindex-html%E5%85%A7%E5%AE%B9%E8%B2%BC%E4%B8%8Aapp-blade"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 打開zip檔，複製index.html內容貼上app.blade</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%89%AA%E4%B8%8Bsidebar-Menu%E8%B2%BC%E5%88%B0menu-blade%E6%AA%94%E6%A1%88%E8%A3%A1"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 剪下sidebar_Menu貼到menu.blade檔案裡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E5%B0%87-Main-content-%E5%89%AA%E4%B8%8B%E8%B2%BC%E5%88%B0-home-blade-%E8%A3%A1"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 將 Main content 剪下貼到 home.blade 裡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E5%9C%A8%E5%8E%9F%E6%9C%ACsidebar%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%BC%95%E5%85%A5menu%EF%BC%88%E9%9C%80%E8%A6%81%E8%B7%AF%E5%BE%91%E5%BC%95%E5%85%A5%E7%89%B9%E5%AE%9A%E6%AA%94%E6%A1%88%E5%85%A7%E5%AE%B9%EF%BC%89"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. 在原本sidebar的位置引入menu（需要路徑引入特定檔案內容）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E5%9C%A8%E5%8E%9F%E6%9C%ACMain-content%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%8A%93content%E5%85%A7%E5%AE%B9%EF%BC%88%E5%8F%AA%E8%A6%81%E5%90%8D%E7%A8%B1%E8%83%BD%E5%A4%A0%E6%8A%93%E5%88%B0%E5%B0%B1%E6%9C%83%E5%BC%95%E5%85%A5%EF%BC%8C%E4%B8%8D%E7%94%A8%E7%B5%A6%E8%B7%AF%E5%BE%91%EF%BC%89"><span class="nav-number">1.1.7.</span> <span class="nav-text">7. 在原本Main content的位置抓content內容（只要名稱能夠抓到就會引入，不用給路徑）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E5%89%8D%E9%9D%A2%E6%9C%89%E6%94%BEcss%E5%92%8Cjs%E6%AA%94%E6%A1%88%E7%9A%84%E8%A9%B1%E8%A6%81%E8%A8%98%E5%BE%97%E6%94%B9app-blade%E7%9A%84%E5%BC%95%E5%85%A5%E8%B7%AF%E5%BE%91"><span class="nav-number">1.1.8.</span> <span class="nav-text">8. 前面有放css和js檔案的話要記得改app.blade的引入路徑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-home-blade%E8%A3%A1%E8%A6%81%E7%B9%BC%E6%89%BF%E9%A0%81%E9%9D%A2"><span class="nav-number">1.1.9.</span> <span class="nav-text">9. home.blade裡要繼承頁面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-%E6%8C%87%E4%BB%A4%E8%99%95%E8%BC%B8%E5%85%A5%EF%BC%9Aphp-artisan-make-controller-Admin-AdminController"><span class="nav-number">1.1.10.</span> <span class="nav-text">10. 指令處輸入：php artisan make:controller Admin&#x2F;AdminController</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E5%8A%A0%E5%85%A5%E8%B7%AF%E7%94%B1"><span class="nav-number">1.1.11.</span> <span class="nav-text">11. 加入路由</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-%E6%89%93%E9%96%8Bserver%E5%88%B0-admin-home-%E7%A2%BA%E8%AA%8D%E7%B6%B2%E9%A0%81%E5%85%A7%E5%AE%B9"><span class="nav-number">1.1.12.</span> <span class="nav-text">12. 打開server到 &#x2F;admin&#x2F;home 確認網頁內容</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%8D%8A%E5%A0%B4%EF%BC%9A%E5%BE%8C%E5%8F%B0%E5%BB%BA%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">下半場：後台建置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%B0menu-blade%E6%8A%8A%E4%B8%8D%E6%9C%83%E7%94%A8%E5%88%B0%E7%9A%84%E6%9D%B1%E8%A5%BF%E5%88%AA%E6%8E%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 到menu.blade把不會用到的東西刪掉</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-widget%E6%94%B9%E6%88%90-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%EF%BC%88%E8%A6%81%E9%80%A3%E7%B5%90%E7%9A%84%E7%B6%B2%E9%A0%81%E5%90%8D%E7%A8%B1%EF%BC%8C%E4%B9%8B%E5%89%8D%E5%81%9A%E7%9A%84%E9%82%A3%E5%80%8B%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. widget改成 注意事項（要連結的網頁名稱，之前做的那個）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%8C%87%E4%BB%A4%E8%99%95%E8%BC%B8%E5%85%A5%EF%BC%9Aphp-artisan-make-controller-Admin-AdminNoticeController"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 指令處輸入：php artisan make:controller Admin&#x2F;AdminNoticeController</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 新增方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E6%96%B0%E5%A2%9E-notice-list-blade-php"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 新增&#x2F;notice&#x2F;list.blade.php</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E6%96%B0%E5%A2%9E%E8%B7%AF%E7%94%B1%EF%BC%88-route-web%EF%BC%89"><span class="nav-number">1.2.6.</span> <span class="nav-text">7. 新增路由（&#x2F;route&#x2F;web）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E5%88%B0app-blade%E4%BF%AE%E6%94%B9-Content-Header-Page-Header"><span class="nav-number">1.2.7.</span> <span class="nav-text">8. 到app.blade修改 Content Header (Page Header)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-list-blade-%E5%A2%9E%E5%8A%A0%E6%96%B0%E5%A2%9E%E5%88%AA%E9%99%A4%E6%8C%89%E9%88%95"><span class="nav-number">1.2.8.</span> <span class="nav-text">9. list.blade 增加新增刪除按鈕</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-%E6%96%B0%E5%A2%9E-admin-notice-add-blade-php-%E9%A0%81%E9%9D%A2"><span class="nav-number">1.2.9.</span> <span class="nav-text">10. 新增 &#x2F;admin&#x2F;notice&#x2F;add.blade.php 頁面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E5%B7%B2%E6%96%B0%E5%A2%9E%E6%99%82%E8%B7%B3%E5%87%BA%E9%80%9A%E7%9F%A5%E8%A6%96%E7%AA%97"><span class="nav-number">1.2.10.</span> <span class="nav-text">11. 已新增時跳出通知視窗</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-%E6%96%BCadminNoticeController-%E5%A2%9E%E5%8A%A0edit%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.11.</span> <span class="nav-text">12. 於adminNoticeController 增加edit的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-%E6%96%B0%E5%A2%9E-admin-notice-edit-blade-%E9%A0%81%E9%9D%A2"><span class="nav-number">1.2.12.</span> <span class="nav-text">13. 新增 &#x2F;admin&#x2F;notice&#x2F;edit.blade 頁面</span></a></li></ol></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">AppleDog</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">5</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+  </footer>
 
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-pen"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">如需轉載請註明作者及來源，謝謝。</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
   </div>
 
-        
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
+  
 
 
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -513,20 +424,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>

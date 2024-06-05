@@ -362,6 +362,10 @@ codeblock:
     show_result: false
     # Available values: default | flat | mac
     style:
+  # Fold code block
+  fold:
+    enable: true
+    threshold: 20
 
 back2top:
   enable: true

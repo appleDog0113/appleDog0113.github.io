@@ -365,7 +365,7 @@ codeblock:
   # Fold code block
   fold:
     enable: true
-    threshold: 20
+    threshold: 5
 
 back2top:
   enable: true

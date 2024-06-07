@@ -1,7 +1,8 @@
+http://appledog0113.github.io/2024/06/06/java-02/
+http://appledog0113.github.io/2024/05/31/java-method-01/
 http://appledog0113.github.io/2024/06/05/lavaral-02/
 http://appledog0113.github.io/2024/06/04/bootstrap-02/
 http://appledog0113.github.io/2024/05/30/bootstrap-01/
-http://appledog0113.github.io/2024/05/31/java-method-01/
 http://appledog0113.github.io/2024/05/27/hello-world/
 http://appledog0113.github.io/2024/05/29/lavarel-01/
 http://appledog0113.github.io/about/index.html

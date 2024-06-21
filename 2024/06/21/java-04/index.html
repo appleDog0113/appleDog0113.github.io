@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"appledog0113.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"onmobile":false},"hljswrap":true,"copycode":{"enable":true,"style":null,"show_result":false},"fold":{"enable":true,"height":500,"threshold":10},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="ch.11 抽象類別、介面（interface）、instanceof()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-簡介-04">
+<meta property="og:url" content="http://appledog0113.github.io/2024/06/21/java-04/index.html">
+<meta property="og:site_name" content="AppleDog&#39;s Note">
+<meta property="og:description" content="ch.11 抽象類別、介面（interface）、instanceof()">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-06-21T00:40:12.000Z">
+<meta property="article:modified_time" content="2024-06-21T07:05:10.618Z">
+<meta property="article:author" content="AppleDog">
+<meta property="article:tag" content="職訓">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://appledog0113.github.io/2024/06/21/java-04/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://appledog0113.github.io/2024/06/21/java-04/","path":"2024/06/21/java-04/","title":"Java-簡介-04"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java-簡介-04 | AppleDog's Note</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AppleDog's Note</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜蟲從零開始的學習筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5"><span class="nav-number">1.</span> <span class="nav-text">抽象類別</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.1.</span> <span class="nav-text">抽象類別介紹</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E9%9D%A2-interface"><span class="nav-number">2.</span> <span class="nav-text">介面 interface</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%8B%E9%9D%A2%E7%9A%84%E5%BB%B6%E4%BC%B8%E8%88%87%E7%B9%BC%E6%89%BF"><span class="nav-number">2.1.</span> <span class="nav-text">介面的延伸與繼承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#instanceof"><span class="nav-number">2.2.</span> <span class="nav-text">instanceof</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">AppleDog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/06/21/java-04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AppleDog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppleDog's Note">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java-簡介-04 | AppleDog's Note">
+      <meta itemprop="description" content="ch.11 抽象類別、介面（interface）、instanceof()">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java-簡介-04
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2024-06-21 08:40:12 / 修改時間：15:05:10" itemprop="dateCreated datePublished" datetime="2024-06-21T08:40:12+08:00">2024-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/" itemprop="url" rel="index"><span itemprop="name">職訓</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>850</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>1 分鐘</span>
+    </span>
+</div>
+
+            <div class="post-description"></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="抽象類別"><a href="#抽象類別" class="headerlink" title="抽象類別"></a>抽象類別</h4><h5 id="抽象類別介紹"><a href="#抽象類別介紹" class="headerlink" title="抽象類別介紹"></a>抽象類別介紹</h5><ul>
+<li>目的是讓使用者依據格式建立新的類別</li>
+<li>關鍵字：<code>abstract</code></li>
+<li>抽象函數裡只有定義名稱，沒有定義處理方式</li>
+</ul>
+<figure class="highlight java"><figcaption><span>hw11_1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">CShape</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">protected</span> <span class="type">int</span> width;</span><br><span class="line">   <span class="keyword">protected</span> <span class="type">int</span> height; </span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span></span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;width=&quot;</span>+width);</span><br><span class="line">      System.out.println(<span class="string">&quot;height=&quot;</span>+height);</span><br><span class="line">      System.out.println(<span class="string">&quot;area=&quot;</span>+area());</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">int</span> <span class="title function_">area</span><span class="params">()</span>;    <span class="comment">// 計算面積  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p>用<code>abstract</code>宣告抽象類別與抽象函數<br>建立父類別<code>CShape</code></p>
+<p>其中沒有用到<code>abstract</code>修飾的就是實例，繼承後可以直接使用<br>被宣告<code>abstract</code>則需要被改寫才能使用</p>
+</div>
+
+<figure class="highlight java"><figcaption><span>hw11_1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">CShape</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">protected</span> <span class="type">int</span> width;</span><br><span class="line">   <span class="keyword">protected</span> <span class="type">int</span> height; </span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span></span><br><span class="line">   &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;width=&quot;</span>+width);</span><br><span class="line">      System.out.println(<span class="string">&quot;height=&quot;</span>+height);</span><br><span class="line">      System.out.println(<span class="string">&quot;area=&quot;</span>+area());</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">int</span> <span class="title function_">area</span><span class="params">()</span>;    <span class="comment">// 計算面積  </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CWin</span> <span class="keyword">extends</span> <span class="title class_">CShape</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">   CWin(<span class="type">int</span> w, <span class="type">int</span> h)&#123;</span><br><span class="line">      width = w;</span><br><span class="line">      height = h;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">area</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> width*height;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw11_1</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;</span><br><span class="line">      CWin win=<span class="keyword">new</span> <span class="title class_">CWin</span>(<span class="number">5</span>,<span class="number">7</span>);  <span class="comment">// 建立CWin類別的物件</span></span><br><span class="line">      win.show();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p><strong>Output</strong><br>width: 5<br>height: 7<br>area: 35</p>
+</div>
+
+<div class="note info"><p>建立子類別<code>CWin</code>繼承<code>CShape</code><br>建立兩個變數的建構元</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">area</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width*height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>複寫原本的抽象類別才能做使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw11_1</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;</span><br><span class="line">      CWin win=<span class="keyword">new</span> <span class="title class_">CWin</span>(<span class="number">5</span>,<span class="number">7</span>);  <span class="comment">// 建立CWin類別的物件</span></span><br><span class="line">      win.show();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>main()</code>裡呼叫子類別<code>CWin</code><br>使用父類別函數<code>win.show()</code><br>並使用在子類別被複寫過的<code>show()</code></p>
+</div>
+
+
+<h4 id="介面-interface"><a href="#介面-interface" class="headerlink" title="介面 interface"></a>介面 interface</h4><ul>
+<li>介面的資料成員必須初始化</li>
+<li>介面的函數必須全部定義成<code>abstract</code></li>
+<li>class可以用<code>implements</code>（實作）介面</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface 介面名稱</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">final</span> 資料型態 成員名稱 =&gt;常數  <span class="comment">// 成員必須設定初值</span></span><br><span class="line">    修飾子 <span class="keyword">abstract</span> 傳回值型態 函數名稱(...);   <span class="comment">//abstract 不會定義處理方式</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>interface</code>裡可以省略<code>final</code>和<code>abstract</code><ul>
+<li>因為是必填</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hw11_9, 多重繼承的練習</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">iShape</span></span><br><span class="line">&#123;   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span>;  </span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">area</span><span class="params">()</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">iColor</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showColor</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CWin</span> <span class="keyword">implements</span> <span class="title class_">iShape</span>,iColor</span><br><span class="line">&#123;</span><br><span class="line">   <span class="type">int</span> width, height;</span><br><span class="line">   String color;</span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">CWin</span><span class="params">(<span class="type">int</span> w, <span class="type">int</span> h, String c)</span>&#123;</span><br><span class="line">      width=w;</span><br><span class="line">      height=h;</span><br><span class="line">      color=c;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">area</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> width*height;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showColor</span><span class="params">()</span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;color: &quot;</span>+color);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;width: &quot;</span>+width);</span><br><span class="line">      System.out.println(<span class="string">&quot;height: &quot;</span>+height);</span><br><span class="line">      System.out.println(<span class="string">&quot;area: &quot;</span>+area());</span><br><span class="line">      showColor();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw11_3</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;</span><br><span class="line">      CWin win=<span class="keyword">new</span> <span class="title class_">CWin</span>(<span class="number">5</span>,<span class="number">7</span>,<span class="string">&quot;Green&quot;</span>);</span><br><span class="line">      win.show();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p><strong>Output</strong><br>width: 5<br>height: 7<br>area: 35<br>color: Green</p>
+</div>
+
+<div class="note info"><p>由於<code>interface</code>的<code>method</code>通通都是<code>abstract</code><br>要使用的話就要全部複寫<br><del>好麻煩喔怎麼這樣</del></p>
+<p><code>class CWin implements iShape,iColor</code><br>介面：<code>implements</code> 後面可以接很多<code>interface</code><br>繼承：<code>expend</code> 後面只能接一個<code>class</code></p>
+</div>
+
+<h5 id="介面的延伸與繼承"><a href="#介面的延伸與繼承" class="headerlink" title="介面的延伸與繼承"></a>介面的延伸與繼承</h5><ul>
+<li>介面可以透過繼承來衍生出新介面<ul>
+<li>原來的介面稱為基底介面或父介面</li>
+<li>衍生出的介面稱為衍生介面或子介面</li>
+<li><strong>一個介面可以繼承自多個介面</strong>（多重繼承）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><figcaption><span>hw11_4</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Data</span></span><br><span class="line">&#123;   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">best</span><span class="params">()</span>;         <span class="comment">// 判斷那一科成績較高</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">failed</span><span class="params">()</span>;       <span class="comment">// 判斷那一科成績低於60分</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Test</span> <span class="keyword">extends</span> <span class="title class_">Data</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showData</span><span class="params">()</span>;     <span class="comment">// 顯示學生的資料及平均成績</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">average</span><span class="params">()</span>;    <span class="comment">// 計算數學和英文的平均成績</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CStu</span> <span class="keyword">implements</span> <span class="title class_">Test</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">protected</span> String name;      <span class="comment">// 姓名 </span></span><br><span class="line">   <span class="keyword">protected</span> <span class="type">int</span> math;         <span class="comment">// 數學成績</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="type">int</span> english;      <span class="comment">// 英文成績</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">CStu</span><span class="params">(String n, <span class="type">int</span> m, <span class="type">int</span> eng)</span>&#123;</span><br><span class="line">      name=n;</span><br><span class="line">      math=m;</span><br><span class="line">      english=eng;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">best</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (math&gt;english)&#123;</span><br><span class="line">         System.out.println(name+<span class="string">&quot;的數學比較好&quot;</span>);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         System.out.println(name+<span class="string">&quot;的英文比較好&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">failed</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(math&lt;<span class="number">60</span> &amp;&amp; english&lt;<span class="number">60</span>)&#123;</span><br><span class="line">         System.out.println(name+<span class="string">&quot;的數學和英文都當掉了&quot;</span>);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (math&lt;<span class="number">60</span>)</span><br><span class="line">            System.out.println(name+<span class="string">&quot;的數學當掉了&quot;</span>);</span><br><span class="line">         <span class="keyword">if</span> (english&lt;<span class="number">60</span>)</span><br><span class="line">            System.out.println(name+<span class="string">&quot;的英文當掉了&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">average</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> (math+english)/<span class="number">2.0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showData</span><span class="params">()</span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;姓名: &quot;</span>+name);</span><br><span class="line">      System.out.println(<span class="string">&quot;數學成績: &quot;</span>+math);</span><br><span class="line">      System.out.println(<span class="string">&quot;英文成績: &quot;</span>+english);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span>&#123;</span><br><span class="line">      showData();</span><br><span class="line">      System.out.println(<span class="string">&quot;平均成績: &quot;</span>+average());</span><br><span class="line">      best();</span><br><span class="line">      failed();      </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw11_4</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;</span><br><span class="line">      CStu stu=<span class="keyword">new</span> <span class="title class_">CStu</span>(<span class="string">&quot;Judy&quot;</span>,<span class="number">58</span>,<span class="number">91</span>);          </span><br><span class="line">      stu.show();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h5><ul>
+<li>測試物件與某類別是否有繼承關係<ul>
+<li>物件是否為某類別或其子類別</li>
+</ul>
+</li>
+<li>回傳值：布林</li>
+</ul>
+<p>格式：<code>[obj] instanceof [class]</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CCircle</span>&#123;&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CCoin</span> <span class="keyword">extends</span> <span class="title class_">CCircle</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw11_5</span> <span class="keyword">extends</span> <span class="title class_">CCoin</span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">      </span><br><span class="line">      <span class="type">boolean</span> status;</span><br><span class="line">      CCoin coin=<span class="keyword">new</span> <span class="title class_">CCoin</span>();</span><br><span class="line">      CCircle cir=<span class="keyword">new</span> <span class="title class_">CCircle</span>();</span><br><span class="line">      hw11_5 obj=<span class="keyword">new</span> <span class="title class_">hw11_5</span>();</span><br><span class="line">      CCoin carr[]=<span class="keyword">new</span> <span class="title class_">CCoin</span>[<span class="number">5</span>];</span><br><span class="line">      </span><br><span class="line">      status=(cir <span class="keyword">instanceof</span> CCoin);</span><br><span class="line">      System.out.println(<span class="string">&quot;cir instanceof CCoin? &quot;</span>+status);</span><br><span class="line">      </span><br><span class="line">      status=(obj <span class="keyword">instanceof</span> CCircle);</span><br><span class="line">      System.out.println(<span class="string">&quot;obj instanceof CCircle? &quot;</span>+status);</span><br><span class="line">      </span><br><span class="line">      status=(coin <span class="keyword">instanceof</span> hw11_5);</span><br><span class="line">      System.out.println(<span class="string">&quot;coin instanceof hw11_5? &quot;</span>+status);</span><br><span class="line"></span><br><span class="line">      status=(coin <span class="keyword">instanceof</span> CCoin);</span><br><span class="line">      System.out.println(<span class="string">&quot;coin instanceof CCoin? &quot;</span>+status);</span><br><span class="line"></span><br><span class="line">      status=(coin <span class="keyword">instanceof</span> CCircle);</span><br><span class="line">      System.out.println(<span class="string">&quot;coin instanceof CCircle? &quot;</span>+status);</span><br><span class="line"></span><br><span class="line">      status=(carr <span class="keyword">instanceof</span> Object);</span><br><span class="line">      System.out.println(<span class="string">&quot;carr instanceof CCircle? &quot;</span>+status);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// status=(cir instanceof String);</span></span><br><span class="line">      <span class="comment">// System.out.println(&quot;coin instanceof CCircle? &quot;+status);            </span></span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p><strong>Output</strong><br>cir instanceof CCoin? false<br>obj instanceof CCircle? true<br>coin instanceof hw11_5? false<br>coin instanceof CCoin? true<br>coin instanceof CCircle? true<br>carr instanceof CCircle? true</p>
+</div>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%81%B7%E8%A8%93/" rel="tag"># 職訓</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/19/lavarel-04/" rel="prev" title="Laravel-後台管理系統與前台顯示 04">
+                  <i class="fa fa-angle-left"></i> Laravel-後台管理系統與前台顯示 04
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/21/java-05/" rel="next" title="Java-簡介-05">
+                  Java-簡介-05 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-pen"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">如需轉載請註明作者及來源，謝謝。</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"appledog0113.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"onmobile":false},"hljswrap":true,"copycode":{"enable":true,"style":null,"show_result":false},"fold":{"enable":true,"height":500,"threshold":10},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="ch.12 大型程式的發展與常用的類別庫 建構package的階層關係 Java常用的類別庫：String、wrapper class的轉換函數、Math ch.13 例外處理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-簡介-06">
+<meta property="og:url" content="http://appledog0113.github.io/2024/06/26/java-06/index.html">
+<meta property="og:site_name" content="AppleDog&#39;s Note">
+<meta property="og:description" content="ch.12 大型程式的發展與常用的類別庫 建構package的階層關係 Java常用的類別庫：String、wrapper class的轉換函數、Math ch.13 例外處理">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-06-26T00:29:50.000Z">
+<meta property="article:modified_time" content="2024-06-26T07:19:53.765Z">
+<meta property="article:author" content="AppleDog">
+<meta property="article:tag" content="職訓">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://appledog0113.github.io/2024/06/26/java-06/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://appledog0113.github.io/2024/06/26/java-06/","path":"2024/06/26/java-06/","title":"Java-簡介-06"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java-簡介-06 | AppleDog's Note</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AppleDog's Note</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜蟲從零開始的學習筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-12"><span class="nav-number">1.</span> <span class="nav-text">ch. 12</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#package-%E9%9A%8E%E5%B1%A4%E9%97%9C%E4%BF%82"><span class="nav-number">1.1.</span> <span class="nav-text">package 階層關係</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E9%A1%9E%E5%88%A5%E5%BA%AB"><span class="nav-number">1.2.</span> <span class="nav-text">常用類別庫</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-13"><span class="nav-number">2.</span> <span class="nav-text">ch. 13</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">例外的基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%E7%9A%84%E8%AA%9E%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">例外處理的語法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%92%E6%92%AD%EF%BC%9A%E5%AD%97%E4%B8%B2%E6%AF%94%E8%BC%83-equals"><span class="nav-number">2.3.</span> <span class="nav-text">插播：字串比較 equals();</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8D%95%E6%8D%89%E5%A4%9A%E5%80%8B%E4%BE%8B%E5%A4%96"><span class="nav-number">2.4.</span> <span class="nav-text">捕捉多個例外</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8B%8B%E5%87%BA%E4%BE%8B%E5%A4%96-throw"><span class="nav-number">2.5.</span> <span class="nav-text">拋出例外 throw</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E8%A1%8C%E6%92%B0%E5%AF%AB%E4%BE%8B%E5%A4%96"><span class="nav-number">2.6.</span> <span class="nav-text">自行撰寫例外</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">AppleDog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/06/26/java-06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AppleDog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppleDog's Note">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java-簡介-06 | AppleDog's Note">
+      <meta itemprop="description" content="<strong>ch.12 大型程式的發展與常用的類別庫</strong><br> 建構package的階層關係<br> Java常用的類別庫：String、wrapper class的轉換函數、Math<br> ch.13 例外處理">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java-簡介-06
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2024-06-26 08:29:50 / 修改時間：15:19:53" itemprop="dateCreated datePublished" datetime="2024-06-26T08:29:50+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/" itemprop="url" rel="index"><span itemprop="name">職訓</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>1 分鐘</span>
+    </span>
+</div>
+
+            <div class="post-description"></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="ch-12"><a href="#ch-12" class="headerlink" title="ch. 12"></a>ch. 12</h4><h5 id="package-階層關係"><a href="#package-階層關係" class="headerlink" title="package 階層關係"></a>package 階層關係</h5><h5 id="常用類別庫"><a href="#常用類別庫" class="headerlink" title="常用類別庫"></a>常用類別庫</h5><ol>
+<li>見ch.12-pg.31</li>
+<li><code>java.lang</code> 類別庫裡的所有類別會自動載入</li>
+</ol>
+<h4 id="ch-13"><a href="#ch-13" class="headerlink" title="ch. 13"></a>ch. 13</h4><h5 id="例外的基本概念"><a href="#例外的基本概念" class="headerlink" title="例外的基本概念"></a>例外的基本概念</h5><ul>
+<li>撰寫程式庫的幾個常見狀況<ul>
+<li>開啟的檔案不存在</li>
+<li>ch.13,p.2</li>
+</ul>
+</li>
+</ul>
+<h5 id="例外處理的語法"><a href="#例外處理的語法" class="headerlink" title="例外處理的語法"></a>例外處理的語法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">**格式**</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">catch</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加入迴圈的例題：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_1</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;</span><br><span class="line"></span><br><span class="line">      <span class="type">double</span> ans;</span><br><span class="line">      <span class="type">int</span> num=<span class="number">12</span>;</span><br><span class="line">         </span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++)</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="keyword">try</span></span><br><span class="line">         &#123;</span><br><span class="line">            ans=num/i;</span><br><span class="line">            System.out.println(num+<span class="string">&quot;/&quot;</span>+i+<span class="string">&quot;=&quot;</span>+num/i);</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">catch</span>(ArithmeticException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;除數為0&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">&quot;end of main() method !!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p><strong>Output</strong><br>除數為0<br>12&#x2F;1&#x3D;12<br>12&#x2F;2&#x3D;6<br>12&#x2F;3&#x3D;4<br>12&#x2F;4&#x3D;3<br>12&#x2F;5&#x3D;2<br>end of main() method !!</p>
+</div>
+
+<div class="note success"><p>將<code>tyr-catch</code>包在<code>for迴圈</code>內，<br><code>catch</code>執行結束後因為還在迴圈內，所以會向下執行下一次迴圈</p>
+<p>原本的寫法是將try-catch寫在外面包住迴圈，<br>這樣catch執行完後就會直接跳final，不會執行迴圈後的動作<br>所以很粗暴地在外面加上剩下的迴圈<br>但這樣邏輯不太合理，只有粗暴</p>
+<p>每次遇到迴圈都有點死腦筋轉不過來<br>反應速度太慢了</p>
+</div>
+
+<h5 id="插播：字串比較-equals"><a href="#插播：字串比較-equals" class="headerlink" title="插播：字串比較 equals();"></a>插播：字串比較 equals();</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_3</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">        String str1=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str2=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str3=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">        String str4=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(str1==str2);</span><br><span class="line">        System.out.println(str2==str3);</span><br><span class="line">        System.out.println(str3==str4);</span><br><span class="line">        System.out.println(str3.equals(str4));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p><strong>Output</strong><br>true<br>false<br>false<br>true</p>
+</div>
+
+<h5 id="捕捉多個例外"><a href="#捕捉多個例外" class="headerlink" title="捕捉多個例外"></a>捕捉多個例外</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_2</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;  </span><br><span class="line">      <span class="type">int</span> arr[]=&#123;<span class="number">4</span>,<span class="number">12</span>,<span class="number">87</span>,<span class="number">21</span>,<span class="number">6</span>,<span class="number">18</span>&#125;;   </span><br><span class="line">      <span class="type">int</span> den[]=&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">61</span>,<span class="number">0</span>&#125;;      </span><br><span class="line">      <span class="type">double</span> sum=<span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">6</span>;i++)&#123;</span><br><span class="line">         <span class="keyword">try</span>&#123;</span><br><span class="line">            sum+=arr[i]/den[i];</span><br><span class="line">            System.out.println(<span class="string">&quot;sum=&quot;</span>+sum);</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">catch</span>(ArithmeticException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;除數為0&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">catch</span>(ArrayIndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;超出陣列數&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p><strong>Output</strong><br>sum&#x3D;2.0<br>除數為0<br>sum&#x3D;14.0<br>除數為0<br>sum&#x3D;14.0<br>除數為0<br>超出陣列數</p>
+</div>
+
+<figure class="highlight java"><figcaption><span>範例二、Exception</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_2</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;  </span><br><span class="line">      <span class="type">int</span> arr[]=&#123;<span class="number">4</span>,<span class="number">12</span>,<span class="number">87</span>,<span class="number">21</span>,<span class="number">6</span>,<span class="number">18</span>&#125;;   </span><br><span class="line">      <span class="type">int</span> den[]=&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">61</span>,<span class="number">0</span>&#125;;      </span><br><span class="line">      <span class="type">double</span> sum=<span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">6</span>;i++)&#123;</span><br><span class="line">         <span class="keyword">try</span>&#123;</span><br><span class="line">            sum+=arr[i]/den[i];</span><br><span class="line">            System.out.println(<span class="string">&quot;sum=&quot;</span>+sum);</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">catch</span>(ArrayIndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;超出陣列數&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;其他例外&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p><strong>Output</strong><br>sum&#x3D;2.0<br>其他例外<br>sum&#x3D;14.0<br>其他例外<br>sum&#x3D;14.0<br>其他例外<br>超出陣列數</p>
+</div>
+
+<div class="note success"><p><code>Exception</code>是<code>ArrayIndexOutOfBoundsException</code>的父類別<br>要放在後面執行<br>否則所有的例外都會被<code>Exception</code>執行，就不會跑出<code>ArrayIndexOutOfBoundsException</code>的例外</p>
+</div>
+
+<h5 id="拋出例外-throw"><a href="#拋出例外-throw" class="headerlink" title="拋出例外 throw"></a>拋出例外 throw</h5><ul>
+<li><p>於程式拋出例外</p>
+<ul>
+<li>系統有內定的會自動拋出</li>
+</ul>
+</li>
+<li><p>指定函式拋出例外</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">函數名稱(引數) <span class="keyword">throws</span> 例外類別<span class="number">1</span>,例外類別<span class="number">2.</span>.....&#123;</span><br><span class="line">    <span class="comment">// 函數內程式碼</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>例題：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_4</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> num, <span class="type">int</span> i)</span> <span class="keyword">throws</span> ArithmeticException&#123;</span><br><span class="line">   </span><br><span class="line">      <span class="type">double</span> ans;</span><br><span class="line">      ans=num/i;</span><br><span class="line">      System.out.println(num+<span class="string">&quot;/&quot;</span>+i+<span class="string">&quot;=&quot;</span>+ans);</span><br><span class="line">   </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;   </span><br><span class="line">   </span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">         <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="type">int</span> num=<span class="number">12</span>;</span><br><span class="line">            test(num,i);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">catch</span>(ArithmeticException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;除數為0&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   System.out.println(<span class="string">&quot;end of main() method !!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p><strong>Output</strong><br>除數為0<br>12&#x2F;1&#x3D;12.0<br>12&#x2F;2&#x3D;6.0<br>12&#x2F;3&#x3D;4.0<br>12&#x2F;4&#x3D;3.0<br>12&#x2F;5&#x3D;2.0<br>end of main() method !!</p>
+</div>
+
+<div class="note success"><p>注意迴圈問題<br>總是迴圈問題</p>
+</div>
+
+<h5 id="自行撰寫例外"><a href="#自行撰寫例外" class="headerlink" title="自行撰寫例外"></a>自行撰寫例外</h5><ul>
+<li>自訂例外必須繼承Expection類別</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class 自訂例外類別名稱 <span class="keyword">extends</span> <span class="title class_">Exception</span>&#123;</span><br><span class="line">    <span class="comment">// 定義類別內的成員</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>來看看組合技！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NotTriangleException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span>&#123;&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RightTriangleException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span>&#123;&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NotRightTriangleException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Triangle</span>&#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTriangle</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span> <span class="keyword">throws</span> NotTriangleException, RightTriangleException, NotRightTriangleException&#123;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">if</span>((a+b)&lt;c || (a+c)&lt;b || (b+c)&lt;a)&#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NotTriangleException</span>();</span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>((a*a+b*b)==c*c)&#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RightTriangleException</span>();</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NotRightTriangleException</span>();</span><br><span class="line">      &#125;  </span><br><span class="line">   &#125;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_5</span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span></span><br><span class="line">   &#123;        </span><br><span class="line">      Triangle tri=<span class="keyword">new</span> <span class="title class_">Triangle</span>();</span><br><span class="line">         </span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">         tri.setTriangle(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span>(NotTriangleException e)&#123;</span><br><span class="line">         System.out.println(<span class="string">&quot;不構成三角形&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span>(RightTriangleException e)&#123;</span><br><span class="line">         System.out.println(<span class="string">&quot;這是直角三角形&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span>(NotRightTriangleException e)&#123;</span><br><span class="line">         System.out.println(<span class="string">&quot;這不是直角三角形&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p><strong>Output</strong><br>這是直角三角形</p>
+</div>
+
+<div class="note success"><ol>
+<li>新增自訂類別並繼承</li>
+<li>自訂類別Triangle, 設定由函數拋出例外</li>
+<li>在Triangle()新增方法setTriangle(int a,int b,int c)，設定數字同時做條件判斷，符合就拋出例外（程式內拋出）</li>
+<li>main()設定一個樣式是Triangle的新物件tri，執行setTriangle()</li>
+<li>catch各種例外，並執行捕捉到相對例外後的程式（print相應內容）</li>
+</ol>
+</div>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%81%B7%E8%A8%93/" rel="tag"># 職訓</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/21/java-05/" rel="prev" title="Java-簡介-05">
+                  <i class="fa fa-angle-left"></i> Java-簡介-05
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-pen"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">如需轉載請註明作者及來源，謝謝。</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

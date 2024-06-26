@@ -28,7 +28,7 @@
 <meta property="og:description" content="ch.12 大型程式的發展與常用的類別庫 建構package的階層關係 Java常用的類別庫：String、wrapper class的轉換函數、Math ch.13 例外處理 ch.14 檔案處理 認識串流 學習檔案開啟與關閉">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-06-26T00:29:50.000Z">
-<meta property="article:modified_time" content="2024-06-26T08:18:35.505Z">
+<meta property="article:modified_time" content="2024-06-26T08:26:43.208Z">
 <meta property="article:author" content="AppleDog">
 <meta property="article:tag" content="職訓">
 <meta property="article:tag" content="Java">
@@ -196,7 +196,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2024-06-26 08:29:50 / 修改時間：16:18:35" itemprop="dateCreated datePublished" datetime="2024-06-26T08:29:50+08:00">2024-06-26</time>
+      <time title="創建時間：2024-06-26 08:29:50 / 修改時間：16:26:43" itemprop="dateCreated datePublished" datetime="2024-06-26T08:29:50+08:00">2024-06-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -340,12 +340,18 @@
 </li>
 <li><p>FileReader</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw14_1</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">        <span class="type">char</span> data[] = <span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="type">FileReader</span> <span class="variable">fr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;C:\\java\\train.txt&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> num=fr.read(data);</span><br><span class="line">        String str=<span class="keyword">new</span> <span class="title class_">String</span>(data,<span class="number">0</span>,<span class="number">9</span>);</span><br><span class="line">        System.out.println(str);</span><br><span class="line">        </span><br><span class="line">        fr.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  <div class="note info"><p><strong>Output</strong><br>火車快飛，火車快飛</p>
+</div>
 </li>
 <li><p>FileWriter</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw14_1</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException&#123;        </span><br><span class="line">        FileWriter fw=<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;C:\\java\\proverb.txt&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        String str2=<span class="string">&quot;\r\nTime is money!&quot;</span>;</span><br><span class="line">        fw.write(str2);</span><br><span class="line">        fw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw14_1</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException&#123;        </span><br><span class="line">        FileWriter fw=<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;C:\\java\\proverb.txt&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        String str2=<span class="string">&quot;\r\nTime is money!&quot;</span>;</span><br><span class="line">        fw.write(str2);</span><br><span class="line">        fw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  <div class="note info"><p><strong>Output</strong><br>Time flies!<br>End of file<br>Time is money!</p>
+</div></li>
 </ul>
 <div class="note success"><p>先建立<code>train.txt</code>和<code>proverb.txt</code>範例檔</p>
-<p>要先載入函式庫<code>java.io.*</code>才能使用相關函式<br><code>throws IOException</code> 例外處理必須設定, 否則會報錯</p>
+<p>要先載入函式庫<code>java.io.*</code>才能使用相關函式<br><code>main() throws IOException</code> 例外處理必須設定, 否則會報錯</p>
 </div>
 
 <h5 id="緩衝區-Buffered"><a href="#緩衝區-Buffered" class="headerlink" title="緩衝區 (Buffered)"></a>緩衝區 (Buffered)</h5>

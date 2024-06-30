@@ -1,12 +1,12 @@
 ---
-title: Lavarel - 後台管理系統 01.
+title: Laravel - 後台管理系統 01.
 date: 2024-05-29 08:39:11
 tags: 
     - 職訓
-    - Lavarel
+    - Laravel
 categories: 
-    - [職訓, Lavarel]
-    - Lavarel
+    - [職訓, Laravel]
+    - Laravel
 description:
 ---
 

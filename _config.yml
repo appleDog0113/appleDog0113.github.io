@@ -115,7 +115,7 @@ symbols_count_time:
   time: true # 文章閱讀時間顯示
   total_symbols: false # 網頁底部字數統計顯示
   total_time: false # 網頁底部閱讀時間顯示
-  exclude_codeblock: true # 字數統計是否排除程式碼
+  exclude_codeblock: false # 字數統計是否排除程式碼
   awl: 4 # 平均文字長度，中文為 2, 英文為 5, 預設為 4
   wpm: 275 # 一分鐘閱讀字數
   suffix: "分鐘"

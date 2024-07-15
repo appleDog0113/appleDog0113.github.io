@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"appledog0113.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":250},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="緩衝區、執行緒 如何建立執行緒 如何管理執行緒 認識執行緒的同步處理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-簡介-07">
+<meta property="og:url" content="http://appledog0113.github.io/2024/07/05/java-07/index.html">
+<meta property="og:site_name" content="AppleDog&#39;s Note">
+<meta property="og:description" content="緩衝區、執行緒 如何建立執行緒 如何管理執行緒 認識執行緒的同步處理">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-07-05T00:32:27.000Z">
+<meta property="article:modified_time" content="2024-07-15T06:36:32.955Z">
+<meta property="article:author" content="AppleDog">
+<meta property="article:tag" content="職訓">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://appledog0113.github.io/2024/07/05/java-07/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://appledog0113.github.io/2024/07/05/java-07/","path":"2024/07/05/java-07/","title":"Java-簡介-07"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java-簡介-07 | AppleDog's Note</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AppleDog's Note</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">菜蟲從零開始的學習筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B7%A9%E8%A1%9D%E5%8D%80-Buffered"><span class="nav-number">1.</span> <span class="nav-text">緩衝區 Buffered</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AA%8D%E8%AD%98%E7%B7%A9%E8%A1%9D%E5%8D%80"><span class="nav-number">1.1.</span> <span class="nav-text">認識緩衝區</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8BufferReader%E9%A1%9E%E5%88%A5"><span class="nav-number">1.2.</span> <span class="nav-text">常用BufferReader類別</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8BufferWriter%E9%A1%9E%E5%88%A5"><span class="nav-number">1.3.</span> <span class="nav-text">常用BufferWriter類別</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A1%8C"><span class="nav-number">1.4.</span> <span class="nav-text">例題</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E7%B7%92"><span class="nav-number">2.</span> <span class="nav-text">執行緒</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AA%8D%E8%AD%98%E5%9F%B7%E8%A1%8C%E7%B7%92-thread"><span class="nav-number">2.1.</span> <span class="nav-text">認識執行緒 (thread)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%9F%B7%E8%A1%8C%E7%B7%92"><span class="nav-number">2.2.</span> <span class="nav-text">建立執行緒</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">範例</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%80%81%E5%B8%AB%E7%9A%84%E5%AF%AB%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">老師的寫法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Thread-%E9%82%84%E6%98%AFRunnable"><span class="nav-number">2.3.</span> <span class="nav-text">使用Thread 還是Runnable ?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E7%B7%92%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F"><span class="nav-number">2.4.</span> <span class="nav-text">執行緒的生命週期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E7%B7%92%E7%9A%84%E5%84%AA%E5%85%88%E9%A0%86%E5%BA%8F"><span class="nav-number">2.5.</span> <span class="nav-text">執行緒的優先順序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E5%9F%B7%E8%A1%8C%E7%B7%92%E5%90%8C%E6%99%82%E8%99%95%E7%90%86%E5%8F%AF%E8%83%BD%E9%80%A0%E6%88%90%E7%9A%84%E9%8C%AF%E8%AA%A4"><span class="nav-number">2.6.</span> <span class="nav-text">多執行緒同時處理可能造成的錯誤</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">2.6.1.</span> <span class="nav-text">解決方式</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">AppleDog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://appledog0113.github.io/2024/07/05/java-07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AppleDog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AppleDog's Note">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java-簡介-07 | AppleDog's Note">
+      <meta itemprop="description" content="緩衝區、執行緒<br> 如何建立執行緒<br> 如何管理執行緒<br> 認識執行緒的同步處理">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java-簡介-07
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2024-07-05 08:32:27" itemprop="dateCreated datePublished" datetime="2024-07-05T08:32:27+08:00">2024-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-07-15 14:36:32" itemprop="dateModified" datetime="2024-07-15T14:36:32+08:00">2024-07-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/" itemprop="url" rel="index"><span itemprop="name">職訓</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%81%B7%E8%A8%93/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>6.9k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>6 分鐘</span>
+    </span>
+</div>
+
+            <div class="post-description"></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="緩衝區-Buffered"><a href="#緩衝區-Buffered" class="headerlink" title="緩衝區 Buffered"></a>緩衝區 Buffered</h4><h5 id="認識緩衝區"><a href="#認識緩衝區" class="headerlink" title="認識緩衝區"></a>認識緩衝區</h5><ul>
+<li><p>有緩衝區的檔案處理方式</p>
+<ul>
+<li>存取時會先將檔案放到緩衝區</li>
+<li>不需要一直做磁碟存取</li>
+</ul>
+</li>
+<li><p>優點：增加執行效率</p>
+</li>
+<li><p>缺點：</p>
+<ul>
+<li>會增加一塊記憶體空間</li>
+<li>可能會因為沒有關閉檔案或系統當機而造成資料流失。</li>
+</ul>
+</li>
+</ul>
+<h5 id="常用BufferReader類別"><a href="#常用BufferReader類別" class="headerlink" title="常用BufferReader類別"></a>常用BufferReader類別</h5><ol>
+<li><p>建構元</p>
+<table>
+<thead>
+<tr>
+<th>建構元</th>
+<th>主要功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BufferedReader(Reader in)</td>
+<td>建立緩衝區字元讀取串流</td>
+</tr>
+<tr>
+<td>BufferedReader(Reader in, int size)</td>
+<td>建立緩衝區字元讀取串流，並設定緩衝區大小</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>函數</p>
+<table>
+<thead>
+<tr>
+<th>函數</th>
+<th>主要功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void close()</td>
+<td>關閉串流</td>
+</tr>
+<tr>
+<td>int read()</td>
+<td>讀取單一字元</td>
+</tr>
+<tr>
+<td>int read(char[] cbuf, int off, int len)</td>
+<td>讀取字元陣列(off表示陣列索引值，len表示讀取位元數)</td>
+</tr>
+<tr>
+<td>long skip(long n)</td>
+<td>跳過n個字元部讀取</td>
+</tr>
+<tr>
+<td>String readLine()</td>
+<td>讀取一行字串</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h5 id="常用BufferWriter類別"><a href="#常用BufferWriter類別" class="headerlink" title="常用BufferWriter類別"></a>常用BufferWriter類別</h5><ol>
+<li><p>建構元</p>
+<table>
+<thead>
+<tr>
+<th>建構元</th>
+<th>主要功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BufferedReader(Reader in)</td>
+<td>建立緩衝區字元寫入串流</td>
+</tr>
+<tr>
+<td>BufferedReader(Reader in, int size)</td>
+<td>建立緩衝區字元寫入串流，並設定緩衝區大小</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>函數</p>
+<table>
+<thead>
+<tr>
+<th>函數</th>
+<th>主要功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void close()</td>
+<td>關閉串流</td>
+</tr>
+<tr>
+<td>void flush()</td>
+<td>寫入緩衝區內的字元到檔案裡</td>
+</tr>
+<tr>
+<td>void newLine()</td>
+<td>寫入換行字元</td>
+</tr>
+<tr>
+<td>void write(int c)</td>
+<td>寫入單一字元</td>
+</tr>
+<tr>
+<td>int write(char[] cbuf, int off, int len)</td>
+<td>寫入字元陣列(off表示陣列索引值，len表示讀取位元數)</td>
+</tr>
+<tr>
+<td>int write(String s, int off, int len)</td>
+<td>寫入字串(off表示陣列索引值，len表示讀取位元數)</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h5 id="例題"><a href="#例題" class="headerlink" title="例題"></a>例題</h5><figure class="highlight java"><figcaption><span>hw14_3_2_緩衝區的寫入與讀出</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Data</span>&#123;</span><br><span class="line">   String name;</span><br><span class="line">   <span class="type">int</span> english;</span><br><span class="line">   <span class="type">int</span> math;</span><br><span class="line">   Data()&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">   Data(String str, <span class="type">int</span> e,<span class="type">int</span> m)&#123;</span><br><span class="line">      name=str;</span><br><span class="line">      english=e;</span><br><span class="line">      math=m;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">void</span> <span class="title function_">writeData</span><span class="params">(BufferedWriter bfw)</span><span class="keyword">throws</span> IOException&#123;</span><br><span class="line">      bfw.write(name);</span><br><span class="line">      bfw.newLine();</span><br><span class="line">      bfw.write(Integer.toString(english));</span><br><span class="line">      bfw.newLine();</span><br><span class="line">      bfw.write(Integer.toString(math));</span><br><span class="line">      bfw.newLine();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;name=&quot;</span>+name+<span class="string">&quot;, english=&quot;</span>+english+<span class="string">&quot;, math=&quot;</span>+math);</span><br><span class="line">      System.out.println(<span class="string">&quot;average=&quot;</span>+(english+math)/<span class="number">2.0</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw14_3_2</span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span><span class="keyword">throws</span> IOException&#123;</span><br><span class="line">      <span class="comment">//寫入資料</span></span><br><span class="line">      FileWriter fw=<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;c:\\java\\student.txt&quot;</span>);</span><br><span class="line">      BufferedWriter bfw=<span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(fw);</span><br><span class="line">      Data stu1=<span class="keyword">new</span> <span class="title class_">Data</span>(<span class="string">&quot;Ariel&quot;</span>,<span class="number">92</span>,<span class="number">85</span>);</span><br><span class="line">      Data stu2=<span class="keyword">new</span> <span class="title class_">Data</span>(<span class="string">&quot;Fiona&quot;</span>,<span class="number">67</span>,<span class="number">89</span>);</span><br><span class="line">      stu1.writeData(bfw);</span><br><span class="line">      stu2.writeData(bfw);</span><br><span class="line">      bfw.flush();</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//讀取資料</span></span><br><span class="line">      FileReader fr=<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;c:\\java\\student.txt&quot;</span>);</span><br><span class="line">      BufferedReader bfr=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(fr);</span><br><span class="line">      readData(bfr);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">readData</span><span class="params">(BufferedReader bfr)</span><span class="keyword">throws</span> IOException&#123;</span><br><span class="line">      Data s=<span class="keyword">new</span> <span class="title class_">Data</span>();   </span><br><span class="line">      String str;</span><br><span class="line">      <span class="type">int</span> count=<span class="number">0</span>;      </span><br><span class="line">      <span class="keyword">while</span>((str=bfr.readLine())!=<span class="literal">null</span>)&#123; </span><br><span class="line">         <span class="keyword">if</span>(count==<span class="number">0</span>)</span><br><span class="line">            s.name=str;</span><br><span class="line">         <span class="keyword">if</span>(count==<span class="number">1</span>)</span><br><span class="line">            s.english=Integer.parseInt(str);</span><br><span class="line">         <span class="keyword">if</span>(count==<span class="number">2</span>)&#123;</span><br><span class="line">            s.math=Integer.parseInt(str);</span><br><span class="line">            count=-<span class="number">1</span>;</span><br><span class="line">            s.show();</span><br><span class="line">         &#125; </span><br><span class="line">         count++;</span><br><span class="line">      &#125;         </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p><strong>Output</strong><br>name: Ariel<br>english: 92<br>math: 85<br>average: 88.5</p>
+<p>name: Fiona<br>english: 67<br>math: 89<br>average: 78.0</p>
+</div>
+
+<div class="note info"><ul>
+<li>可以在相應路徑<code>c:\\java\\student.txt</code>內找到檔案</li>
+<li>要import <code>java.io.*</code>才能使用</li>
+<li>使用函式庫要記得拋出例外<code>throws IOException</code></li>
+</ul>
+</div>
+
+<h4 id="執行緒"><a href="#執行緒" class="headerlink" title="執行緒"></a>執行緒</h4><h5 id="認識執行緒-thread"><a href="#認識執行緒-thread" class="headerlink" title="認識執行緒 (thread)"></a>認識執行緒 (thread)</h5><p>執行緒(thread)是指程式的執行流程，「多執行緒」則可同時執行多個程式區塊。<br>→程式間可以多工同時執行</p>
+<pre><code class="highlight mermaid">graph
+
+a[dog.run]
+b[cat.run]
+c((流程開始))
+d((流程繼續))
+
+subgraph 多執行緒
+c--&gt;a--&gt;d;
+c--&gt;b--&gt;d;
+a--同時執行---b
+end</code></pre>
+
+<ul>
+<li><p>啟動執行緒</p>
+<ul>
+<li>此類別必須延伸自<code>Thread</code>類別</li>
+<li>執行緒的處理必須撰寫在run()內</li>
+</ul>
+</li>
+<li><p>啟動語法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class 類別名稱 <span class="keyword">extends</span> <span class="title class_">Thread</span>   <span class="comment">// 從Thread類別延伸出子類別</span></span><br><span class="line">&#123;</span><br><span class="line">    類別裡的資料成員;</span><br><span class="line">    類別裡的函數;</span><br><span class="line">    修飾子 run()&#123;               <span class="comment">// 改寫Thread類別裡的run()函數</span></span><br><span class="line">        以執行緒處理的程序;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  範例:</p>
+  <figure class="highlight java"><figcaption><span>hw15_1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CTest</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">String id;</span><br><span class="line">CTest(String str)&#123;</span><br><span class="line">    id = str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">1000000000</span>;j++); <span class="comment">//空迴圈，拖慢執行速度方便觀察差異</span></span><br><span class="line">        System.out.println(id+<span class="string">&quot; &quot;</span>+i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw15_1</span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">    <span class="type">CTest</span> <span class="variable">hi</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CTest</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">    <span class="type">CTest</span> <span class="variable">bye</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CTest</span>(<span class="string">&quot;Good Bye&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    hi.start();</span><br><span class="line">    bye.start();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div class="note success"><p><strong>Output</strong><br>Good Bye 1<br>Hello 1<br>Good Bye 2<br>Good Bye 3<br>Good Bye 4<br>Hello 2<br>Hello 3<br>Hello 4</p>
+</div>
+
+<div class="note info"><p>呼叫<code>start()</code>時<br>會呼叫<code>run()</code>內的函數</p>
+<p><code>hi.start();</code><br><code>bye.start();</code><br>同時執行，由於互相搶記憶體空間，因此會有參差時間差</p>
+</div>
+
+<pre><code class="highlight mermaid">stateDiagram-v2 
+
+state 單執行緒 &#123;
+direction LR
+
+[*] --&gt; dog.run
+dog.run --&gt; cat.run
+cat.run --&gt;[*]
+&#125;
+</code></pre>
+
+<pre><code class="highlight mermaid">stateDiagram-v2
+
+state 多執行緒 &#123;
+
+[*] --&gt; dog.run
+dog.run --&gt;[*]
+
+--
+[*] --&gt; cat.run
+cat.run --&gt;[*]
+
+&#125;
+</code></pre>
+
+<h5 id="建立執行緒"><a href="#建立執行緒" class="headerlink" title="建立執行緒"></a>建立執行緒</h5><ul>
+<li>如果類別本身已經<code>繼承</code>某個父類別，可以利用實作<code>Runnable</code>的方式建立執行緒<ul>
+<li><code>介面</code>是實現多重繼承的重要方式</li>
+<li>把處理執行緒的程式碼，放在實作<code>Runnable</code>介面的類別中的<code>run()</code>就可以建立執行緒</li>
+</ul>
+</li>
+</ul>
+<h6 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">hi</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">   String id;</span><br><span class="line">   hi(String str)&#123;</span><br><span class="line">      id = str;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">         System.out.println(id+<span class="string">&quot; &quot;</span>+i);</span><br><span class="line">         <span class="keyword">try</span>&#123;</span><br><span class="line">            sleep(<span class="number">1000</span>);</span><br><span class="line">         &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;&#125;;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">bye</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">   String id;</span><br><span class="line">   bye(String str)&#123;</span><br><span class="line">      id = str;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">         System.out.println(id+<span class="string">&quot; &quot;</span>+i);</span><br><span class="line">         <span class="keyword">try</span>&#123;</span><br><span class="line">            sleep(<span class="number">2500</span>);</span><br><span class="line">         &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;&#125;;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw15_3</span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">      <span class="type">hi</span> <span class="variable">hi</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">hi</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">      <span class="type">bye</span> <span class="variable">bye</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">bye</span>(<span class="string">&quot;Good Bye&quot;</span>);</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">      hi.start();</span><br><span class="line">      bye.start();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p><strong>Output</strong><br>    Good Bye 1<br>    Hello 1<br>    Hello 2<br>    Hello 3<br>    Good Bye 2<br>    Hello 4<br>    Good Bye 3<br>    Good Bye 4</p>
+</div>
+
+<div class="note info"><p><code>class hi</code> 繼承<code>Thread</code>實作<code>Runnable</code>介面<br><code>public void run()</code>：改寫<code>run();</code><br>用<code>try{} catch(){};</code>拋出例外：<code>InterruptedException e</code></p>
+</div>
+
+<h6 id="老師的寫法"><a href="#老師的寫法" class="headerlink" title="老師的寫法"></a>老師的寫法</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CTest</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">   String id;</span><br><span class="line">   <span class="type">int</span> sec;</span><br><span class="line">   CTest(String str,<span class="type">int</span> s)&#123;</span><br><span class="line">      id = str;</span><br><span class="line">      sec = s;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">         <span class="keyword">try</span>&#123;</span><br><span class="line">            Thread.sleep(sec);</span><br><span class="line">         &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;&#125;</span><br><span class="line">            </span><br><span class="line">         System.out.println(id+<span class="string">&quot; &quot;</span>+i);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw15_1</span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">      <span class="type">CTest</span> <span class="variable">hi</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CTest</span>(<span class="string">&quot;Hello&quot;</span>,<span class="number">1000</span>);</span><br><span class="line">      <span class="type">CTest</span> <span class="variable">bye</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CTest</span>(<span class="string">&quot;Good Bye&quot;</span>,<span class="number">2500</span>);</span><br><span class="line">      </span><br><span class="line">      <span class="type">Thread</span> <span class="variable">T1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(hi);</span><br><span class="line">      <span class="type">Thread</span> <span class="variable">T2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(bye);</span><br><span class="line">      </span><br><span class="line">      T1.start();</span><br><span class="line">      T2.start();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用Thread-還是Runnable"><a href="#使用Thread-還是Runnable" class="headerlink" title="使用Thread 還是Runnable ?"></a>使用Thread 還是Runnable ?</h5><ul>
+<li>如果只能繼承一個類別，可以實作多個介面</li>
+<li>如果要使用多執行緒的類別以經濟成其他類別，就必須<code>實作``(implement)``Runnable</code>介面</li>
+<li>當某個類別實作<code>Runnable</code>介面時，在該類別裡必須要實作<code>run()</code></li>
+<li>若是繼承<code>Thread</code>類別，要於該類別中改寫<code>run()</code></li>
+</ul>
+<h5 id="執行緒的生命週期"><a href="#執行緒的生命週期" class="headerlink" title="執行緒的生命週期"></a>執行緒的生命週期</h5><ul>
+<li><p>每一個執行緒，在其產生和銷毀之前，均會處於下列五種狀態之一：</p>
+<ul>
+<li>新產生的 (newly created)</li>
+<li>可執行的 (runable)</li>
+<li>正在執行的 (executing)</li>
+<li>被凍結的 (blocked)</li>
+<li>銷毀的 (dead)</li>
+</ul>
+</li>
+<li><p>執行緒狀態的轉移與函數之間的關係：</p>
+  <pre><code class="highlight mermaid">stateDiagram
+
+[*]--&gt;新產生的執行緒
+新產生的執行緒--&gt;可執行的執行緒: strat()
+可執行的執行緒--&gt;執行中的執行緒: wait(), sleep()
+執行中的執行緒--&gt;被凍結的執行緒: wait(), sleep()
+被凍結的執行緒--&gt;[*]
+
+被凍結的執行緒--&gt;可執行的執行緒: sleep()結束, notify()
+執行中的執行緒--&gt;銷毀的執行緒: run()結束
+</code></pre>
+</li>
+<li><p>被<strong>凍結</strong>的狀態</p>
+<ul>
+<li>發生下列事件時，凍結狀態的執行緒便會產生<ul>
+<li>該執行緒呼叫物件的<code>wait()</code></li>
+<li>執行緒本身呼叫<code>sleep()</code></li>
+<li>執行緒和另一個執行緒<code>join()</code>在一起時</li>
+</ul>
+</li>
+<li>解除被凍結、凍結因素消失的原因<ul>
+<li>由<code>wait()</code>凍結時，<code>notify()</code>被呼叫時解除</li>
+<li>進入睡眠狀態<code>sleep()</code>，指定的睡眠時間結束</li>
+</ul>
+</li>
+<li>銷毀的狀態<ul>
+<li><code>run()</code>執行結束、呼叫<code>stop()</code>時，進入銷毀狀態</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="執行緒的優先順序"><a href="#執行緒的優先順序" class="headerlink" title="執行緒的優先順序"></a>執行緒的優先順序</h5><ul>
+<li><p>執行緒優先順序以數字1~10來表示，數字越大表示修先權越高</p>
+</li>
+<li><p>相關函數</p>
+<table>
+<thead>
+<tr>
+<th>函數</th>
+<th>主要功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void setPriority(int newPriority)</td>
+<td>設定執行緒的優先順序，newPriority()的範圍為1~10</td>
+</tr>
+<tr>
+<td>int getPriority()</td>
+<td>取得執行緒的優先順序之值</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>setPriority()中的引數newPriority可使用代碼</p>
+<table>
+<thead>
+<tr>
+<th>代碼</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MAX_PRIORITY</td>
+<td>最大優先順序之數值</td>
+</tr>
+<tr>
+<td>MIN_PRIORITY</td>
+<td>最小優先順序之數值</td>
+</tr>
+<tr>
+<td>NORM_PRIORITY</td>
+<td>系統預設的優先順序之數值</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h5 id="多執行緒同時處理可能造成的錯誤"><a href="#多執行緒同時處理可能造成的錯誤" class="headerlink" title="多執行緒同時處理可能造成的錯誤"></a>多執行緒同時處理可能造成的錯誤</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CBank</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> sum;</span><br><span class="line">        tmp = tmp+n;    <span class="comment">// 累加匯款總額</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Thread.sleep((<span class="type">int</span>)(<span class="number">1000</span>*Math.random()));    <span class="comment">// 小睡0~1秒</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;&#125;</span><br><span class="line">        sum=tmp;</span><br><span class="line">        System.out.println(<span class="string">&quot;sum= &quot;</span>+sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CCustomer</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;     <span class="comment">// CCustomer類別, 繼承自Thread</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;      <span class="comment">// run() 函數</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">            CBank.add(<span class="number">100</span>);     <span class="comment">// 將100元分三次匯入</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">app15_8</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">        CCustomer c1=<span class="keyword">new</span> <span class="title class_">CCustomer</span>(); </span><br><span class="line">        CCustomer c2=<span class="keyword">new</span> <span class="title class_">CCustomer</span>();</span><br><span class="line">        c1.start();</span><br><span class="line">        c2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p><strong>Output</strong><br>sum&#x3D; 100<br>sum&#x3D; 100<br>sum&#x3D; 200<br>sum&#x3D; 300<br>sum&#x3D; 200<br>sum&#x3D; 300</p>
+</div>
+
+<div class="note info"><p>按照程式題意，<code>c1</code>和<code>C2</code>是各分三次存300元進CBank<br>照理說最後 <code>sum= 600</code>才對<br>但是由於多執行緒<code>同時處理</code>，讓後處理的執行緒<strong>複寫</strong>了先處理執行緒的<code>sum</code><br>所以出來的結果會是<code>sum= 300</code></p>
+</div>
+
+<h6 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h6><ul>
+<li><p>只要在<code>add()</code>前加上<code>synchronized</code>關鍵字</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>synchronized</code>本意為<strong>「同步」</strong>，表一次只准許一個執行緒進入<code>add()</code></p>
+</li>
+<li><p>修改後執行結果如下：</p>
+  <div class="note success"><p><strong>Output</strong><br>sum&#x3D; 100<br>sum&#x3D; 200<br>sum&#x3D; 300<br>sum&#x3D; 400<br>sum&#x3D; 500<br>sum&#x3D; 600</p>
+</div>
+</li>
+<li><p>多個執行緒共用<strong>變數</strong>時，要注意存取順序是否打架</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%81%B7%E8%A8%93/" rel="tag"># 職訓</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/03/laravel-07/" rel="prev" title="Laravel-07-專案二: 賣茶網">
+                  <i class="fa fa-angle-left"></i> Laravel-07-專案二: 賣茶網
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/07/10/laravel-08/" rel="next" title="Laravel-08-專案二: 賣茶網">
+                  Laravel-08-專案二: 賣茶網 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-pen"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">如需轉載請註明作者及來源，謝謝。</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

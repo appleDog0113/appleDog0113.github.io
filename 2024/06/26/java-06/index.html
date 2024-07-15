@@ -28,7 +28,7 @@
 <meta property="og:description" content="ch.12 大型程式的發展與常用的類別庫 建構package的階層關係 Java常用的類別庫：String、wrapper class的轉換函數、Math ch.13 例外處理 ch.14 檔案處理 認識串流 學習檔案開啟與關閉">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-06-26T00:29:50.000Z">
-<meta property="article:modified_time" content="2024-06-26T08:35:46.817Z">
+<meta property="article:modified_time" content="2024-07-15T01:23:54.508Z">
 <meta property="article:author" content="AppleDog">
 <meta property="article:tag" content="職訓">
 <meta property="article:tag" content="Java">
@@ -115,7 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-12"><span class="nav-number">1.</span> <span class="nav-text">ch. 12</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#package-%E9%9A%8E%E5%B1%A4%E9%97%9C%E4%BF%82"><span class="nav-number">1.1.</span> <span class="nav-text">package 階層關係</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E9%A1%9E%E5%88%A5%E5%BA%AB"><span class="nav-number">1.2.</span> <span class="nav-text">常用類別庫</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-13"><span class="nav-number">2.</span> <span class="nav-text">ch. 13</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">例外的基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%E7%9A%84%E8%AA%9E%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">例外處理的語法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%92%E6%92%AD%EF%BC%9A%E5%AD%97%E4%B8%B2%E6%AF%94%E8%BC%83-equals"><span class="nav-number">2.3.</span> <span class="nav-text">插播：字串比較 equals();</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8D%95%E6%8D%89%E5%A4%9A%E5%80%8B%E4%BE%8B%E5%A4%96"><span class="nav-number">2.4.</span> <span class="nav-text">捕捉多個例外</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8B%8B%E5%87%BA%E4%BE%8B%E5%A4%96-throw"><span class="nav-number">2.5.</span> <span class="nav-text">拋出例外 throw</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E8%A1%8C%E6%92%B0%E5%AF%AB%E4%BE%8B%E5%A4%96"><span class="nav-number">2.6.</span> <span class="nav-text">自行撰寫例外</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-14-%E6%AA%94%E6%A1%88%E8%99%95%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">ch.14 檔案處理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AA%8D%E8%AD%98%E4%B8%B2%E6%B5%81"><span class="nav-number">3.1.</span> <span class="nav-text">認識串流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%99%95%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">檔案的基本處理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B7%A9%E8%A1%9D%E5%8D%80-Buffered"><span class="nav-number">3.3.</span> <span class="nav-text">緩衝區 (Buffered)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-12"><span class="nav-number">1.</span> <span class="nav-text">ch. 12</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#package-%E9%9A%8E%E5%B1%A4%E9%97%9C%E4%BF%82"><span class="nav-number">1.1.</span> <span class="nav-text">package 階層關係</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E9%A1%9E%E5%88%A5%E5%BA%AB"><span class="nav-number">1.2.</span> <span class="nav-text">常用類別庫</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-13"><span class="nav-number">2.</span> <span class="nav-text">ch. 13</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">例外的基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%E7%9A%84%E8%AA%9E%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">例外處理的語法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%92%E6%92%AD%EF%BC%9A%E5%AD%97%E4%B8%B2%E6%AF%94%E8%BC%83-equals"><span class="nav-number">2.3.</span> <span class="nav-text">插播：字串比較 equals()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8D%95%E6%8D%89%E5%A4%9A%E5%80%8B%E4%BE%8B%E5%A4%96"><span class="nav-number">2.4.</span> <span class="nav-text">捕捉多個例外</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8B%8B%E5%87%BA%E4%BE%8B%E5%A4%96-throw"><span class="nav-number">2.5.</span> <span class="nav-text">拋出例外 throw</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E8%A1%8C%E6%92%B0%E5%AF%AB%E4%BE%8B%E5%A4%96"><span class="nav-number">2.6.</span> <span class="nav-text">自行撰寫例外</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ch-14-%E6%AA%94%E6%A1%88%E8%99%95%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">ch.14 檔案處理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AA%8D%E8%AD%98%E4%B8%B2%E6%B5%81"><span class="nav-number">3.1.</span> <span class="nav-text">認識串流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%99%95%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">檔案的基本處理</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -128,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -180,7 +180,7 @@
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="Java-簡介-06 | AppleDog's Note">
-      <meta itemprop="description" content="<strong>ch.12 大型程式的發展與常用的類別庫<br> 建構package的階層關係<br> Java常用的類別庫：String、wrapper class的轉換函數、Math<br> <strong>ch.13 例外處理</strong><br> <strong>ch.14 檔案處理</strong><br> 認識串流<br> 學習檔案開啟與關閉<br>">
+      <meta itemprop="description" content="<strong>ch.12 大型程式的發展與常用的類別庫<br></strong> 建構package的階層關係<br> Java常用的類別庫：String、wrapper class的轉換函數、Math<br> <strong>ch.13 例外處理</strong><br> <strong>ch.14 檔案處理</strong><br> 認識串流<br> 學習檔案開啟與關閉<br>">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -194,9 +194,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2024-06-26 08:29:50 / 修改時間：16:35:46" itemprop="dateCreated datePublished" datetime="2024-06-26T08:29:50+08:00">2024-06-26</time>
+      <time title="創建時間：2024-06-26 08:29:50" itemprop="dateCreated datePublished" datetime="2024-06-26T08:29:50+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-07-15 09:23:54" itemprop="dateModified" datetime="2024-07-15T09:23:54+08:00">2024-07-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -223,7 +229,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>6k</span>
+      <span>5.9k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -265,7 +271,7 @@
 <p>每次遇到迴圈都有點死腦筋轉不過來<br>反應速度太慢了</p>
 </div>
 
-<h5 id="插播：字串比較-equals"><a href="#插播：字串比較-equals" class="headerlink" title="插播：字串比較 equals();"></a>插播：字串比較 equals();</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_3</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">        String str1=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str2=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str3=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">        String str4=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(str1==str2);</span><br><span class="line">        System.out.println(str2==str3);</span><br><span class="line">        System.out.println(str3==str4);</span><br><span class="line">        System.out.println(str3.equals(str4));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="插播：字串比較-equals"><a href="#插播：字串比較-equals" class="headerlink" title="插播：字串比較 equals()"></a>插播：字串比較 equals()</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw13_3</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">        String str1=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str2=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        String str3=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">        String str4=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(str1==str2);</span><br><span class="line">        System.out.println(str2==str3);</span><br><span class="line">        System.out.println(str3==str4);</span><br><span class="line">        System.out.println(str3.equals(str4));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <div class="note info"><p><strong>Output</strong><br>true<br>false<br>false<br>true</p>
 </div>
@@ -348,13 +354,13 @@
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hw14_1</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException&#123;        </span><br><span class="line">        FileWriter fw=<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;C:\\java\\proverb.txt&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        String str2=<span class="string">&quot;\r\nTime is money!&quot;</span>;</span><br><span class="line">        fw.write(str2);</span><br><span class="line">        fw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   <div class="note info"><p><strong>Output</strong><br>Time flies!<br>End of file<br>Time is money!</p>
-</div></li>
-</ul>
-<div class="note success"><p>先建立<code>train.txt</code>和<code>proverb.txt</code>範例檔</p>
-<p>要先載入函式庫<code>java.io.*</code>才能使用相關函式<br><code>main() throws IOException</code> 例外處理必須設定, 否則會報錯</p>
 </div>
 
-<h5 id="緩衝區-Buffered"><a href="#緩衝區-Buffered" class="headerlink" title="緩衝區 (Buffered)"></a>緩衝區 (Buffered)</h5>
+ <div class="note success"><p>先建立<code>train.txt</code>和<code>proverb.txt</code>範例檔</p>
+<p>要先載入函式庫<code>java.io.*</code>才能使用相關函式<br><code>main() throws IOException</code> 例外處理必須設定, 否則會報錯</p>
+</div></li>
+</ul>
+
     </div>
 
     
@@ -433,6 +439,8 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
 

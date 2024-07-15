@@ -108,7 +108,7 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: "git"
-  repo: git@github.com:appleDog0113/appleDog0113.github.io.git
+  repo: git@github.com:appleDooog/appleDooog.github.io.git
   branch: main
 
 # count

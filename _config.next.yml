@@ -374,11 +374,11 @@ codeblock:
   copy_button:
     enable: true
     # Available values: default | flat | mac
-    style:
+    style: default
   # Fold code block
   fold:
     enable: true
-    height: 500
+    height: 250
 
 back2top:
   enable: true
@@ -533,10 +533,10 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
   theme:
-    light: default
+    light: neutral
     dark: dark
 
 # WaveDrom tag
